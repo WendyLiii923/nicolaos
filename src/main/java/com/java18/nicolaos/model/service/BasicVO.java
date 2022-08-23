@@ -23,4 +23,11 @@ public class BasicVO {
 		this.isActive = isActive;
 		this.createTime = createTime;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+
+	
 }
