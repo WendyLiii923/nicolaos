@@ -3,10 +3,10 @@ package com.java18.nicolaos.model.service;
 import java.sql.Timestamp;
 
 public class BasicVO {
-	Integer id;
-	String name;
-	boolean isActive;
-	Timestamp createTime;
+	Integer id = 2;
+	String name = "ww";
+	boolean isActive = false;
+	Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	
 	public BasicVO() {
 		
