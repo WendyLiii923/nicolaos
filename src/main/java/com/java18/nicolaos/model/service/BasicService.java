@@ -17,10 +17,16 @@ public class BasicService {
 		BasicVO vo1 = new BasicVO();
 		System.out.println(vo1);
 		
-		BasicVO vo2 = new BasicVO(5, "66");
+		BasicVO vo2 = new BasicVO();
+		vo2.setId(5);
+		vo2.setName("66");
 		System.out.println(vo2);
 		
-		BasicVO vo3 = new BasicVO(2, "33", true, new Timestamp(System.currentTimeMillis()));
+		BasicVO vo3 = new BasicVO();
+		vo3.setId(2);
+		vo3.setName("33");
+		vo3.setActive(true);
+		vo3.setCreateTime(new Timestamp(System.currentTimeMillis()));
 		System.out.println(vo3);
 		
 		
