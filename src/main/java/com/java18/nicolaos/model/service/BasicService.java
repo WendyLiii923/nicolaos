@@ -1,5 +1,8 @@
 package com.java18.nicolaos.model.service;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,76 +12,93 @@ import com.java18.nicolaos.model.User;
 import javassist.compiler.ast.Member;
 
 public class BasicService {
-
-	public static int funcS1(int num1, int num2) {
-		int sum;
-		sum = num1 + num2;
-		return sum;
-	}
-
-	public static String[] funcS2(String word1, String word2) {
-		String[] arr = new String[2];
-		arr[0] = word1;
-		arr[1] = word2;
-		return arr;
-	}
-
-	public static ArrayList<String> funcS3(String phone1, String phone2) {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add(phone1);
-		list.add(phone2);
-		return list;
-	}
-
-	public static HashMap<String, String> funcS4(String value) {
-		HashMap<String, String> payload = new HashMap<String, String>();
-		payload.put("payload", value);
-		return payload;
-	}
-
-	public static User funcS5(User oldUser) {
-		int userId = 5;
-		String userName = "Peter";
-		oldUser.setId(userId);
-		oldUser.setUserName(userName);
-		return oldUser;
-	}
-
-	public static UsedCategory funcS6(UsedCategory oldCategory) {
-		int categoryId = 2;
-		String categoryName = "Hats";
-		oldCategory.setId(categoryId);
-		oldCategory.setName(categoryName);
-		return oldCategory;
-	}
-
-	public static void funcS7(String woo) {
-		woo = "無";
-	}
 	
 	public static void main(String[] args) {
-		int num = BasicService.funcS1(1, 2);
-		String[] array = BasicService.funcS2("w","ww");
-		ArrayList<String> Alist = BasicService.funcS3("apple","asus");
-		HashMap<String, String> payload = BasicService.funcS4("有效載荷");
+		BasicVO vo1 = new BasicVO();
+		System.out.println(vo1);
 		
-		User oldUser = new User();
-		User newUser = BasicService.funcS5(oldUser);
+		BasicVO vo2 = new BasicVO(5, "66");
+		System.out.println(vo2);
 		
-		UsedCategory oldCategory = new UsedCategory();
-		UsedCategory newCategory = BasicService.funcS6(oldCategory);
-
-		String wooo = null;
-		BasicService.funcS7(wooo);
-
-		System.out.println(num);
-		System.out.println(array);
-		System.out.println(Alist);
-		System.out.println(payload);
-		System.out.println(newUser);
-		System.out.println(newCategory);
+		BasicVO vo3 = new BasicVO(2, "33", true, new Timestamp(System.currentTimeMillis()));
+		System.out.println(vo3);
+		
+		
 	}
+	
+	
+	/** part 2 */
+//	public static int funcS1(int num1, int num2) {
+//		int sum;
+//		sum = num1 + num2;
+//		return sum;
+//	}
+//
+//	public static String[] funcS2(String word1, String word2) {
+//		String[] arr = new String[2];
+//		arr[0] = word1;
+//		arr[1] = word2;
+//		return arr;
+//	}
+//
+//	public static ArrayList<String> funcS3(String phone1, String phone2) {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add(phone1);
+//		list.add(phone2);
+//		return list;
+//	}
+//
+//	public static HashMap<String, String> funcS4(String value) {
+//		HashMap<String, String> payload = new HashMap<String, String>();
+//		payload.put("payload", value);
+//		return payload;
+//	}
+//
+//	public static User funcS5(User oldUser) {
+//		int userId = 5;
+//		String userName = "Peter";
+//		oldUser.setId(userId);
+//		oldUser.setUserName(userName);
+//		return oldUser;
+//	}
+//
+//	public static UsedCategory funcS6(UsedCategory oldCategory) {
+//		int categoryId = 2;
+//		String categoryName = "Hats";
+//		oldCategory.setId(categoryId);
+//		oldCategory.setName(categoryName);
+//		return oldCategory;
+//	}
+//
+//	public static void funcS7(String woo) {
+//		woo = "無";
+//	}
+//	
+//	public static void main(String[] args) {
+//		int num = BasicService.funcS1(1, 2);
+//		String[] array = BasicService.funcS2("w","ww");
+//		ArrayList<String> Alist = BasicService.funcS3("apple","asus");
+//		HashMap<String, String> payload = BasicService.funcS4("有效載荷");
+//		
+//		User oldUser = new User();
+//		User newUser = BasicService.funcS5(oldUser);
+//		
+//		UsedCategory oldCategory = new UsedCategory();
+//		UsedCategory newCategory = BasicService.funcS6(oldCategory);
+//
+//		String wooo = null;
+//		BasicService.funcS7(wooo);
+//
+//		System.out.println(num);
+//		System.out.println(array);
+//		System.out.println(Alist);
+//		System.out.println(payload);
+//		System.out.println(newUser);
+//		System.out.println(newCategory);
+//	}
 
+	
+	/** part 1 */ 
 //	public String func1() {
 //		return "SUCCESS";
 //	}
