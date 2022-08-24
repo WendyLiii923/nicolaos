@@ -24,11 +24,14 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 
 	public static void main(String[] args) {
 		BasicService bs = new BasicService();
+		
 		String name1 = "-2";
-		System.out.println(bs.funcE1(name1));
+		Integer success = bs.funcE1(name1);
+		System.out.println(success);
+		
 		String name2 = "w";
-		bs.funcE1(name2);
-		System.out.println(-1);
+		Integer fail = bs.funcE1(name2);
+		System.out.println(fail);
 	}
 
 	/** part 9 */
