@@ -1,13 +1,13 @@
 package com.java18.nicolaos.model.service;
 
 public class BasicServiceParent {
-	public int funcP1(int num1, int num2) {
+	private int funcP1(int num1, int num2) {
 		int sum;
 		sum = num1 + num2;
 		return sum;
 	}
 	
-	public int funcP2(int num1, int num2) {
+	protected int funcP2(int num1, int num2) {
 		int ans;
 		ans = num1 - num2;
 		return ans;

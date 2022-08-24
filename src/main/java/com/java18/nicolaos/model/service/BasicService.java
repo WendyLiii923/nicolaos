@@ -14,8 +14,8 @@ import javassist.compiler.ast.Member;
 public class BasicService extends BasicServiceParent{
 	public static void main(String[] args) {
 		BasicService bs = new BasicService();
-		int funp1 = bs.funcP1(6, 5);
-		System.out.println(funp1);
+//		int funp1 = bs.funcP1(6, 5);
+//		System.out.println(funp1);
 		
 		int funp2 = bs.funcP2(6, 5);
 		System.out.println(funp2);
