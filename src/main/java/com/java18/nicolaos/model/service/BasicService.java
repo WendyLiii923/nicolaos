@@ -11,7 +11,7 @@ import com.java18.nicolaos.model.User;
 
 import javassist.compiler.ast.Member;
 
-public class BasicService implements BasicServiceInterfaceA, BasicServiceInterfaceB{
+public class BasicService extends BasicServiceParent implements BasicServiceInterfaceA, BasicServiceInterfaceB{
 	
 	@Override
 	public int funcIA1(int num1, int num2) {
