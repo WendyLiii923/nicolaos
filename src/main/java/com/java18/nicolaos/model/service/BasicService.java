@@ -13,14 +13,14 @@ import javassist.compiler.ast.Member;
 
 public class BasicService extends BasicServiceParent{
 	public static void main(String[] args) {
-		BasicServiceParent BSP = new BasicServiceParent();
-		int funp1 = BSP.funcP1(6, 5);
+		BasicService bs = new BasicService();
+		int funp1 = bs.funcP1(6, 5);
 		System.out.println(funp1);
 		
-		int funp2 = BSP.funcP2(6, 5);
+		int funp2 = bs.funcP2(6, 5);
 		System.out.println(funp2);
 		
-		int funp3 = BSP.funcP3(6, 5);
+		int funp3 = bs.funcP3(6, 5);
 		System.out.println(funp3);
 	}
 	
