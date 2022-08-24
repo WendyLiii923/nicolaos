@@ -46,52 +46,52 @@ public class BasicService extends BasicServiceParent{
 	
 	
 	/** part 2 */
-//	public static int funcS1(int num1, int num2) {
-//		int sum;
-//		sum = num1 + num2;
-//		return sum;
-//	}
-//
-//	public static String[] funcS2(String word1, String word2) {
-//		String[] arr = new String[2];
-//		arr[0] = word1;
-//		arr[1] = word2;
-//		return arr;
-//	}
-//
-//	public static ArrayList<String> funcS3(String phone1, String phone2) {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add(phone1);
-//		list.add(phone2);
-//		return list;
-//	}
-//
-//	public static HashMap<String, String> funcS4(String value) {
-//		HashMap<String, String> payload = new HashMap<String, String>();
-//		payload.put("payload", value);
-//		return payload;
-//	}
-//
-//	public static User funcS5(User oldUser) {
-//		int userId = 5;
-//		String userName = "Peter";
-//		oldUser.setId(userId);
-//		oldUser.setUserName(userName);
-//		return oldUser;
-//	}
-//
-//	public static UsedCategory funcS6(UsedCategory oldCategory) {
-//		int categoryId = 2;
-//		String categoryName = "Hats";
-//		oldCategory.setId(categoryId);
-//		oldCategory.setName(categoryName);
-//		return oldCategory;
-//	}
-//
-//	public static void funcS7(String woo) {
-//		woo = "無";
-//	}
-//	
+	public static int funcS1(int num1, int num2) {
+		int sum;
+		sum = num1 + num2;
+		return sum;
+	}
+
+	public static String[] funcS2(String word1, String word2) {
+		String[] arr = new String[2];
+		arr[0] = word1;
+		arr[1] = word2;
+		return arr;
+	}
+
+	public static ArrayList<String> funcS3(String phone1, String phone2) {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add(phone1);
+		list.add(phone2);
+		return list;
+	}
+
+	public static HashMap<String, String> funcS4(String value) {
+		HashMap<String, String> payload = new HashMap<String, String>();
+		payload.put("payload", value);
+		return payload;
+	}
+
+	public static User funcS5(User oldUser) {
+		int userId = 5;
+		String userName = "Peter";
+		oldUser.setId(userId);
+		oldUser.setUserName(userName);
+		return oldUser;
+	}
+
+	public static UsedCategory funcS6(UsedCategory oldCategory) {
+		int categoryId = 2;
+		String categoryName = "Hats";
+		oldCategory.setId(categoryId);
+		oldCategory.setName(categoryName);
+		return oldCategory;
+	}
+
+	public static void funcS7(String woo) {
+		woo = "無";
+	}
+	
 //	public static void main(String[] args) {
 //		int num = BasicService.funcS1(1, 2);
 //		String[] array = BasicService.funcS2("w","ww");
@@ -117,45 +117,45 @@ public class BasicService extends BasicServiceParent{
 
 	
 	/** part 1 */ 
-//	public String func1() {
-//		return "SUCCESS";
-//	}
-//
-//	public Integer func2() {
-//		return 1;
-//	}
-//
-//	public ArrayList<String> func3() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("ONE");
-//		list.add("TWO");
-//		return list;
-//	}
-//
-//	public HashMap<String, String> func4() {
-//		HashMap<String, String> status = new HashMap<String, String>();
-//		status.put("status", "SUCCESS");
-//		return status;
-//	}
-//
-//	public User func5() {
-//		User user = new User();
-//		user.setId(1);
-//		user.setUserName("Wendy");
-//		return user;
-//	}
-//
-//	public UsedCategory func6() {
-//		UsedCategory usedCategory = new UsedCategory();
-//		usedCategory.setId(2);
-//		usedCategory.setName("pants");
-//		return usedCategory;
-//	}
-//
-//	public void func7(String woo) {
-//		woo = "無";
-//	}
-//
+	public String func1() {
+		return "SUCCESS";
+	}
+
+	public Integer func2() {
+		return 1;
+	}
+
+	public ArrayList<String> func3() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("ONE");
+		list.add("TWO");
+		return list;
+	}
+
+	public HashMap<String, String> func4() {
+		HashMap<String, String> status = new HashMap<String, String>();
+		status.put("status", "SUCCESS");
+		return status;
+	}
+
+	public User func5() {
+		User user = new User();
+		user.setId(1);
+		user.setUserName("Wendy");
+		return user;
+	}
+
+	public UsedCategory func6() {
+		UsedCategory usedCategory = new UsedCategory();
+		usedCategory.setId(2);
+		usedCategory.setName("pants");
+		return usedCategory;
+	}
+
+	public void func7(String woo) {
+		woo = "無";
+	}
+
 //	public static void main(String[] args) {
 //		BasicService bc = new BasicService();
 //		String success = bc.func1();
