@@ -11,18 +11,46 @@ import com.java18.nicolaos.model.User;
 
 import javassist.compiler.ast.Member;
 
-public class BasicService extends BasicServiceParent{
+public class BasicService implements BasicServiceInterfaceA, BasicServiceInterfaceB{
+	
+	@Override
+	public int funcIA1(int num1, int num2) {
+		int sum;
+		sum = num1 + num2;
+		return sum;
+	}
+	
+	@Override
+	public int funcIB1(int num1, int num2) {
+		int ans;
+		ans = num1 * num2;
+		return ans;
+	}
+	
 	public static void main(String[] args) {
 		BasicService bs = new BasicService();
+		int sum = bs.funcIA1(6, 5);
+		int ans = bs.funcIB1(6, 5);
+		System.out.println(sum);
+		System.out.println(ans);
+	}
+	
+	
+	
+	
+	
+	/** part 6 */
+//	public static void main(String[] args) {
+//		BasicService bs = new BasicService();
 //		int funp1 = bs.funcP1(6, 5);
 //		System.out.println(funp1);
-		
-		int funp2 = bs.funcP2(6, 5);
-		System.out.println(funp2);
-		
-		int funp3 = bs.funcP3(6, 5);
-		System.out.println(funp3);
-	}
+//		
+//		int funp2 = bs.funcP2(6, 5);
+//		System.out.println(funp2);
+//		
+//		int funp3 = bs.funcP3(6, 5);
+//		System.out.println(funp3);
+//	}
 	
 	
 	/** part 5 */
@@ -155,6 +183,7 @@ public class BasicService extends BasicServiceParent{
 	public void func7(String woo) {
 		woo = "無";
 	}
+
 
 //	public static void main(String[] args) {
 //		BasicService bc = new BasicService();
