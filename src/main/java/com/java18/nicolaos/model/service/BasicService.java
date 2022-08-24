@@ -2,9 +2,10 @@ package com.java18.nicolaos.model.service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.hibernate.internal.build.AllowSysOut;
 
 import com.java18.nicolaos.model.UsedCategory;
 import com.java18.nicolaos.model.User;
@@ -12,7 +13,22 @@ import com.java18.nicolaos.model.User;
 import javassist.compiler.ast.Member;
 
 public class BasicService extends BasicServiceParent implements BasicServiceInterfaceA, BasicServiceInterfaceB{
+	public Integer funcE1(String name) {
+		return Integer.valueOf(name);
+	}
+	public static void main(String[] args) {
+		BasicService bs = new BasicService();
+		String name = "w";
+	        try{
+	             Integer.valueOf(bs.funcE1(name));
+	             System.out.println(Math.abs(Integer.valueOf(bs.funcE1(name))));
+	        }catch (Exception ex) {
+	            System.out.println("-1");
+	        }
+	}
 	
+	
+	/** part 9 */
 	@Override
 	public int funcIA1(int num1, int num2) {
 		int sum;
@@ -27,16 +43,13 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 		return ans;
 	}
 	
-	public static void main(String[] args) {
-		BasicService bs = new BasicService();
-		int sum = bs.funcIA1(6, 5);
-		int ans = bs.funcIB1(6, 5);
-		System.out.println(sum);
-		System.out.println(ans);
-	}
-	
-	
-	
+//	public static void main(String[] args) {
+//		BasicService bs = new BasicService();
+//		int sum = bs.funcIA1(6, 5);
+//		int ans = bs.funcIB1(6, 5);
+//		System.out.println(sum);
+//		System.out.println(ans);
+//	}
 	
 	
 	/** part 6 */
