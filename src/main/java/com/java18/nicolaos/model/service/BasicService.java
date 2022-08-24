@@ -11,27 +11,38 @@ import com.java18.nicolaos.model.User;
 
 import javassist.compiler.ast.Member;
 
-public class BasicService {
-	
+public class BasicService extends BasicServiceParent{
 	public static void main(String[] args) {
-		BasicVO vo1 = new BasicVO();
-		System.out.println(vo1);
+		BasicServiceParent BSP = new BasicServiceParent();
+		int funp1 = BSP.funcP1(6, 5);
+		System.out.println(funp1);
 		
-		int id2 = 5;
-		String name2 = "66";
-		BasicVO vo2 = new BasicVO(id2, name2);
-		System.out.println(vo2);
+		int funp2 = BSP.funcP2(6, 5);
+		System.out.println(funp2);
 		
-		
-		int id3 = 2;
-		String name3 = "33";
-		boolean isActive3 = true;
-		Timestamp createTime3 = new Timestamp(System.currentTimeMillis());
-		BasicVO vo3 = new BasicVO(id3, name3, isActive3, createTime3);
-		System.out.println(vo3);
-		
-		
+		int funp3 = BSP.funcP3(6, 5);
+		System.out.println(funp3);
 	}
+	
+	
+	/** part 5 */
+//	public static void main(String[] args) {
+//		BasicVO vo1 = new BasicVO();
+//		System.out.println(vo1);
+//		
+//		int id2 = 5;
+//		String name2 = "66";
+//		BasicVO vo2 = new BasicVO(id2, name2);
+//		System.out.println(vo2);
+//		
+//		
+//		int id3 = 2;
+//		String name3 = "33";
+//		boolean isActive3 = true;
+//		Timestamp createTime3 = new Timestamp(System.currentTimeMillis());
+//		BasicVO vo3 = new BasicVO(id3, name3, isActive3, createTime3);
+//		System.out.println(vo3);
+//	}
 	
 	
 	/** part 2 */
