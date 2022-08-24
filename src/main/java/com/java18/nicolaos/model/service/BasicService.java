@@ -12,15 +12,16 @@ import com.java18.nicolaos.model.User;
 
 import javassist.compiler.ast.Member;
 
-public class BasicService extends BasicServiceParent implements BasicServiceInterfaceA, BasicServiceInterfaceB{
+public class BasicService extends BasicServiceParent implements BasicServiceInterfaceA, BasicServiceInterfaceB {
 	public Integer funcE1(String name) {
-		try{
+		try {
 			Math.abs(Integer.valueOf(name));
-       }catch (Exception ex) {
-    	   return -1;
-       }
+		} catch (Exception ex) {
+			return -1;
+		}
 		return Math.abs(Integer.valueOf(name));
 	}
+
 	public static void main(String[] args) {
 		BasicService bs = new BasicService();
 		String name1 = "-2";
@@ -28,16 +29,8 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 		String name2 = "w";
 		bs.funcE1(name2);
 		System.out.println(-1);
-		
-//	        try{
-//	             Integer.valueOf(bs.funcE1(name));
-//	             System.out.println(Math.abs(Integer.valueOf(bs.funcE1(name))));
-//	        }catch (Exception ex) {
-//	            System.out.println("-1");
-//	        }
 	}
-	
-	
+
 	/** part 9 */
 	@Override
 	public int funcIA1(int num1, int num2) {
@@ -45,14 +38,14 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 		sum = num1 + num2;
 		return sum;
 	}
-	
+
 	@Override
 	public int funcIB1(int num1, int num2) {
 		int ans;
 		ans = num1 * num2;
 		return ans;
 	}
-	
+
 //	public static void main(String[] args) {
 //		BasicService bs = new BasicService();
 //		int sum = bs.funcIA1(6, 5);
@@ -60,8 +53,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 //		System.out.println(sum);
 //		System.out.println(ans);
 //	}
-	
-	
+
 	/** part 6 */
 //	public static void main(String[] args) {
 //		BasicService bs = new BasicService();
@@ -74,8 +66,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 //		int funp3 = bs.funcP3(6, 5);
 //		System.out.println(funp3);
 //	}
-	
-	
+
 	/** part 5 */
 //	public static void main(String[] args) {
 //		BasicVO vo1 = new BasicVO();
@@ -94,8 +85,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 //		BasicVO vo3 = new BasicVO(id3, name3, isActive3, createTime3);
 //		System.out.println(vo3);
 //	}
-	
-	
+
 	/** part 2 */
 	public static int funcS1(int num1, int num2) {
 		int sum;
@@ -142,7 +132,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 	public static void funcS7(String woo) {
 		woo = "無";
 	}
-	
+
 //	public static void main(String[] args) {
 //		int num = BasicService.funcS1(1, 2);
 //		String[] array = BasicService.funcS2("w","ww");
@@ -166,8 +156,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 //		System.out.println(newCategory);
 //	}
 
-	
-	/** part 1 */ 
+	/** part 1 */
 	public String func1() {
 		return "SUCCESS";
 	}
@@ -207,7 +196,6 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 		woo = "無";
 	}
 
-
 //	public static void main(String[] args) {
 //		BasicService bc = new BasicService();
 //		String success = bc.func1();
@@ -228,5 +216,5 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 //		System.out.println(category);
 //
 //	}
-	
+
 }
