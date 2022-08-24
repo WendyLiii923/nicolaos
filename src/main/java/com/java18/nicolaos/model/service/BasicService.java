@@ -14,12 +14,14 @@ import javassist.compiler.ast.Member;
 
 public class BasicService extends BasicServiceParent implements BasicServiceInterfaceA, BasicServiceInterfaceB {
 	public Integer funcE1(String name) {
+		Integer num;
 		try {
-			Math.abs(Integer.valueOf(name));
+			num = Math.abs(Integer.valueOf(name));
+			
 		} catch (Exception ex) {
-			return -1;
+			num = -1;
 		}
-		return Math.abs(Integer.valueOf(name));
+		return num;
 	}
 
 	public static void main(String[] args) {
