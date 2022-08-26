@@ -29,5 +29,8 @@ public class CategoryService {
 		return categoryDao.deleteCategory(id);
 	}
 	
+	public UsedCategory updateCategory(UsedCategory usedCategory) {
+		return categoryDao.updateCategory(usedCategory);
+	}
 
 }

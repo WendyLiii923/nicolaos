@@ -85,15 +85,12 @@ public class CategoryDaoImpl implements CategoryDao {
 			find.setParameter("CATEGORYID", find);
 			List<UsedCategory> list = find.list();
 			UsedCategory updateItem = list.get(0);
-			updateItem.setName(selectCategoryById);
+			updateItem.getName();
 			getSession().save(updateItem);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("fail");
-			return null;
 		}
-		System.out.println("success");
 		return usedCategory;
 	}
 

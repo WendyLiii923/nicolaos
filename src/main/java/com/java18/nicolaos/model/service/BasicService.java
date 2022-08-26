@@ -18,7 +18,7 @@ public class BasicService extends BasicServiceParent implements BasicServiceInte
 		try {
 			num = Math.abs(Integer.valueOf(name));
 			
-		} catch (Exception ex) {
+		} catch (NumberFormatException ex) {
 			num = -1;
 		}
 		return num;
