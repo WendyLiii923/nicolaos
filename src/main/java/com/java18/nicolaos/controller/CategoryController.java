@@ -47,7 +47,7 @@ public class CategoryController {
 	@PutMapping
 	@ResponseBody
 	public UsedCategory updateCategory(@RequestBody UsedCategory body) {
-		return categoryService.createCategory(body.getName(),body.getParentId());
+		return categoryService.updateCategory(body);
 	}
 	
 
