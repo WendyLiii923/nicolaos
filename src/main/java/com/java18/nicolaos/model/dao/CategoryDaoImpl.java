@@ -78,15 +78,13 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 
 	@Override
-	// 未完成
 	public UsedCategory updateCategory(UsedCategory usedCategory) {
-		UsedCategory us = new UsedCategory();
 		try {
 			Query<UsedCategory> find = getSession().createQuery(selectCategoryById, UsedCategory.class);
-			find.setParameter("CATEGORYID", us.getId());
+			find.setParameter("CATEGORYID", usedCategory.getId());
 			List<UsedCategory> list = find.list();
 			UsedCategory updateItem = list.get(0);
-			updateItem.getName();
+			updateItem.setName(usedCategory.getName());
 			getSession().save(updateItem);
 
 		} catch (Exception e) {
