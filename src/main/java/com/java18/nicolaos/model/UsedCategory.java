@@ -72,13 +72,11 @@ public class UsedCategory {
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "UsedCategory [createTime=" + createTime + ", id=" + id + ", name=" + name + ", parentId=" + parentId
 				+ "]";
 	}
 	
-	
-
 }

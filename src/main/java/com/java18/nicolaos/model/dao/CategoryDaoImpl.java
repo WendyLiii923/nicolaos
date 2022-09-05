@@ -11,11 +11,14 @@ import org.springframework.stereotype.Repository;
 
 import com.java18.nicolaos.model.UsedCategory;
 
+@SuppressWarnings("deprecation")
 @Repository
 public class CategoryDaoImpl implements CategoryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	private final String selectAllCategory = "FROM com.java18.nicolaos.model.UsedCategory";
+	private final String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=:CATEGORYID";
 
 	public CategoryDaoImpl() {
 
@@ -24,17 +27,6 @@ public class CategoryDaoImpl implements CategoryDao {
 	public Session getSession() {
 		Session session = sessionFactory.getCurrentSession();
 		return session;
-	}
-
-	private final String selectAllCategory = "FROM com.java18.nicolaos.model.UsedCategory";
-	private final String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=:CATEGORYID";
-
-	@Override
-	public List<UsedCategory> getCategoryList() {
-		Query<UsedCategory> check = getSession().createQuery(selectAllCategory, UsedCategory.class);
-
-		List<UsedCategory> list = check.list();
-		return list;
 	}
 
 	@Override
@@ -49,6 +41,14 @@ public class CategoryDaoImpl implements CategoryDao {
 			return null;
 		}
 		return usedCategory;
+	}
+
+	@Override
+	public List<UsedCategory> getCategoryList() {
+		Query<UsedCategory> check = getSession().createQuery(selectAllCategory, UsedCategory.class);
+
+		List<UsedCategory> list = check.list();
+		return list;
 	}
 
 	@Override
