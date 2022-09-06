@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -14,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name = "used_chat")
 public class UsedChat {
+	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private Integer fromId;
 	private Integer toId;
@@ -23,12 +27,24 @@ public class UsedChat {
 		
 	}
 
-	public UsedChat(Timestamp createTime, Integer fromId, Integer toId, String content) {
+	public UsedChat(Integer id, Timestamp createTime, Integer fromId, Integer toId, String content) {
 		super();
+		this.id = id;
 		this.createTime = createTime;
 		this.fromId = fromId;
 		this.toId = toId;
 		this.content = content;
+	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
@@ -70,8 +86,8 @@ public class UsedChat {
 
 	@Override
 	public String toString() {
-		return "UsedChat [createTime=" + createTime + ", fromId=" + fromId + ", toId=" + toId + ", content=" + content
-				+ "]";
+		return "UsedChat [id=" + id + ", createTime=" + createTime + ", fromId=" + fromId + ", toId=" + toId
+				+ ", content=" + content + "]";
 	}
-	
+
 }

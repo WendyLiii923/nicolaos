@@ -19,19 +19,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class UsedCollect {
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
-	private Integer member_id;
-	private Integer product_id;
+	private Integer memberId;
+	private Integer productId;
 	
 	public UsedCollect() {
 		
 	}
 
-	public UsedCollect(Integer id, Timestamp createTime, Integer member_id, Integer product_id) {
+	public UsedCollect(Integer id, Timestamp createTime, Integer memberId, Integer productId) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
-		this.member_id = member_id;
-		this.product_id = product_id;
+		this.memberId = memberId;
+		this.productId = productId;
 	}
 
 	@Id
@@ -57,30 +57,30 @@ public class UsedCollect {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "member_id")
-	public Integer getMember_id() {
-		return member_id;
+	@Column(name = "memberId")
+	public Integer getMemberId() {
+		return memberId;
 	}
 
 
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
-	@Column(name = "product_id")
-	public Integer getProduct_id() {
-		return product_id;
+	@Column(name = "productId")
+	public Integer getProductId() {
+		return productId;
 	}
 
 
-	public void setProduct_id(Integer product_id) {
-		this.product_id = product_id;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
 	@Override
 	public String toString() {
-		return "UsedCollect [id=" + id + ", createTime=" + createTime + ", member_id=" + member_id + ", product_id="
-				+ product_id + "]";
+		return "UsedCollect [id=" + id + ", createTime=" + createTime + ", memberId=" + memberId + ", productId="
+				+ productId + "]";
 	}
 	
 }

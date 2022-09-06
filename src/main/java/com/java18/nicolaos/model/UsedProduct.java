@@ -22,22 +22,22 @@ public class UsedProduct {
 	private String name;
 	private Integer price;
 	private String content;
-	private Integer member_id;
-	private Integer categoryid;
+	private Integer memberId;
+	private Integer categoryId;
 	
 	public UsedProduct() {
 		
 	}
 
-	public UsedProduct(Integer id, Timestamp createTime, String name, Integer price, String content, Integer member_id,
-			Integer categoryid) {
+	public UsedProduct(Integer id, Timestamp createTime, String name, Integer price, String content, Integer memberId,
+			Integer categoryId) {
 		this.id = id;
 		this.createTime = createTime;
 		this.name = name;
 		this.price = price;
 		this.content = content;
-		this.member_id = member_id;
-		this.categoryid = categoryid;
+		this.memberId = memberId;
+		this.categoryId = categoryId;
 	}
 
 	@Id
@@ -88,28 +88,28 @@ public class UsedProduct {
 		this.content = content;
 	}
 
-	@Column(name = "member_id")
-	public Integer getMember_id() {
-		return member_id;
+	@Column(name = "memberId")
+	public Integer getMemberId() {
+		return memberId;
 	}
 
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
 	@Column(name = "categoryId")
 	public Integer getCategoryid() {
-		return categoryid;
+		return categoryId;
 	}
 
-	public void setCategoryid(Integer categoryid) {
-		this.categoryid = categoryid;
+	public void setCategoryid(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	@Override
 	public String toString() {
 		return "UsedProduct [id=" + id + ", createTime=" + createTime + ", name=" + name + ", price=" + price
-				+ ", content=" + content + ", member_id=" + member_id + ", categoryid=" + categoryid + "]";
+				+ ", content=" + content + ", memberId=" + memberId + ", categoryId=" + categoryId + "]";
 	}
 	
 }

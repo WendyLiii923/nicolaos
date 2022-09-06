@@ -18,7 +18,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	private final String selectAllCategory = "FROM com.java18.nicolaos.model.UsedCategory";
-	private final String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=:CATEGORYID";
+	private final String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=CATEGORYID";
 
 	public CategoryDaoImpl() {
 
@@ -50,6 +50,14 @@ public class CategoryDaoImpl implements CategoryDao {
 		List<UsedCategory> list = check.list();
 		return list;
 	}
+	
+	@Override
+	public List<UsedCategory> getCategoryByIdList(Integer id) {
+		Query<UsedCategory> check = getSession().createQuery(selectCategoryById, UsedCategory.class);
+		check.setParameter("CATEGORYID", id);
+		List<UsedCategory> list = check.list();
+		return list;
+	}
 
 	@Override
 	public HashMap<String, String> deleteCategory(Integer id) {
@@ -58,7 +66,6 @@ public class CategoryDaoImpl implements CategoryDao {
 			Query<UsedCategory> result = getSession().createQuery(selectCategoryById, UsedCategory.class);
 			result.setParameter("CATEGORYID", id);
 			List<UsedCategory> list = result.list();
-			list.isEmpty();
 			if (list.isEmpty() == false) {
 				UsedCategory deleteItem = list.get(0);
 				getSession().delete(deleteItem);
@@ -92,5 +99,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		}
 		return usedCategory;
 	}
+
 
 }

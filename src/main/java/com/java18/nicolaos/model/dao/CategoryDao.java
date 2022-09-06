@@ -12,6 +12,7 @@ public interface CategoryDao {
 
 	//read function
 	public List<UsedCategory> getCategoryList();
+	public List<UsedCategory> getCategoryByIdList(Integer id);
 	
 	//delete
 	public HashMap<String, String> deleteCategory(Integer id);

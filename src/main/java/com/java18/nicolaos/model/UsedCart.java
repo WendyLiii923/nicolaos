@@ -20,18 +20,18 @@ public class UsedCart {
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private Boolean status;
-	private Integer member_id;
+	private Integer memberId;
 	
 	public UsedCart() {
 		
 	}
 	
-	public UsedCart(Integer id, Timestamp createTime, Boolean status, Integer member_id) {
+	public UsedCart(Integer id, Timestamp createTime, Boolean status, Integer memberId) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
 		this.status = status;
-		this.member_id = member_id;
+		this.memberId = memberId;
 	}
 	
 	@Id
@@ -64,18 +64,18 @@ public class UsedCart {
 		this.status = status;
 	}
 	
-	@Column(name = "member_id")
-	public Integer getMember_id() {
-		return member_id;
+	@Column(name = "memberId")
+	public Integer getMemberId() {
+		return memberId;
 	}
 	
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 	
 	@Override
 	public String toString() {
-		return "UsedCart [id=" + id + ", createTime=" + createTime + ", status=" + status + ", member_id=" + member_id
+		return "UsedCart [id=" + id + ", createTime=" + createTime + ", status=" + status + ", memberId=" + memberId
 				+ "]";
 	}
 	

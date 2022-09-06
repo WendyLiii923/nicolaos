@@ -25,7 +25,7 @@ public class Members {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="member_id")
+    @Column(name="memberId")
     public Integer getId() {
         return id;
     }

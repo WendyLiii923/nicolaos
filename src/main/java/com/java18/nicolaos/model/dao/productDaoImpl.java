@@ -13,16 +13,20 @@ import com.java18.nicolaos.model.UsedProduct;
 
 @SuppressWarnings("deprecation")
 @Repository
-public class productDaoImpl implements productDao{
+public class ProductDaoImpl implements ProductDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	private String selectAllProduct = "FROM com.java18.nicolaos.model.UsedProduct";
 	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=PRODUCTID";
-	private String selectProductByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE";
-	private String selectProductByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE DESC";
+	private String selectProductByEarly = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME";
+	private String selectProductByLate = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME DESC";
+	private String selectProductOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE";
+	private String selectProductOrderByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE DESC";
+	private String selectProductByPriceZoneOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN START AND END ORDER BY PRICE";
+	private String selectProductByPriceZoneOrderByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN START AND END ORDER BY PRICE DESC";
 	
-	public productDaoImpl() {
+	public ProductDaoImpl() {
 		
 	}
 	
@@ -54,27 +58,72 @@ public class productDaoImpl implements productDao{
 		return list;
 	}
 	
-	//待完成
 	@Override
-	public List<UsedProduct> getProductListByPrice(Integer lowPrice, Integer highPrice) {
-		Query<UsedProduct> check = getSession().createQuery(selectAllProduct, UsedProduct.class);
+	public List<UsedProduct> getProductListById(Integer id) {
+		Query<UsedProduct> check = getSession().createQuery(selectProductById, UsedProduct.class);
+		check.setParameter("PRODUCTID", id);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+	
+	@Override
+	public List<UsedProduct> getProductListByEarly() {
+		Query<UsedProduct> check = getSession().createQuery(selectProductByEarly, UsedProduct.class);
 		List<UsedProduct> list = check.list();
 		return list;
 	}
 
 	@Override
+	public List<UsedProduct> getProductListByLate() {
+		Query<UsedProduct> check = getSession().createQuery(selectProductByLate, UsedProduct.class);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+
+	@Override
+	public List<UsedProduct> getProductListOrderByLowPrice() {
+		Query<UsedProduct> check = getSession().createQuery(selectProductOrderByLowPrice, UsedProduct.class);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+
+	@Override
+	public List<UsedProduct> getProductListOrderByHighPrice() {
+		Query<UsedProduct> check = getSession().createQuery(selectProductOrderByHighPrice, UsedProduct.class);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+
+	@Override
+	public List<UsedProduct> getProductListByPriceZoneOrderByLowPrice(Integer start, Integer end) {
+		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByLowPrice, UsedProduct.class);
+		check.setParameter("PRICE", start);
+		check.setParameter("PRICE", end);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+
+	@Override
+	public List<UsedProduct> getProductListByPriceZoneOrderByHighPrice(Integer start, Integer end) {
+		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByHighPrice,UsedProduct.class);
+		check.setParameter("PRICE", start);
+		check.setParameter("PRICE", end);
+		List<UsedProduct> list = check.list();
+		return list;
+	}
+	
+	@Override
 	public HashMap<String, String> deleteProduct(Integer id) {
 		HashMap<String, String> status = new HashMap<String, String>();
 		try {
 			Query<UsedProduct> result = getSession().createQuery(selectProductById, UsedProduct.class);
-			result.setParameter("CATEGORYID", id);
+			result.setParameter("PRODUCTID", id);
 			List<UsedProduct> list = result.list();
-			list.isEmpty();
 			if (list.isEmpty() == false) {
 				UsedProduct deleteItem = list.get(0);
 				getSession().delete(deleteItem);
 			} else {
-				status.put("status", "fail to fing");
+				status.put("status", "fail to find");
 				System.out.println(status);
 			}
 		} catch (Exception e) {
@@ -101,6 +150,11 @@ public class productDaoImpl implements productDao{
 		}
 		return usedProduct;
 	}
+
+
+
+
+
 
 	
 	

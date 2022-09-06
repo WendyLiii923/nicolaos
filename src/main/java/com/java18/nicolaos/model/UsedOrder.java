@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class UsedOrder {
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
-	private Integer member_id;
+	private Integer memberId;
 	private Integer productQty;
 	private Integer price;
 	private Integer shippingFee;
@@ -28,12 +28,12 @@ public class UsedOrder {
 		
 	}
 
-	public UsedOrder(Integer id, Timestamp createTime, Integer member_id, Integer productQty, Integer price,
+	public UsedOrder(Integer id, Timestamp createTime, Integer memberId, Integer productQty, Integer price,
 			Integer shippingFee) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
-		this.member_id = member_id;
+		this.memberId = memberId;
 		this.productQty = productQty;
 		this.price = price;
 		this.shippingFee = shippingFee;
@@ -60,13 +60,13 @@ public class UsedOrder {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "member_id")
-	public Integer getMember_id() {
-		return member_id;
+	@Column(name = "memberId")
+	public Integer getMemberId() {
+		return memberId;
 	}
 
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
 	@Column(name = "productQty")
@@ -98,7 +98,7 @@ public class UsedOrder {
 
 	@Override
 	public String toString() {
-		return "UsedOrder [id=" + id + ", createTime=" + createTime + ", member_id=" + member_id + ", productQty="
+		return "UsedOrder [id=" + id + ", createTime=" + createTime + ", memberId=" + memberId + ", productQty="
 				+ productQty + ", price=" + price + ", shippingFee=" + shippingFee + "]";
 	}
 	

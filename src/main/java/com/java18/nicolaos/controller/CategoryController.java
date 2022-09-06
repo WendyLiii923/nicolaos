@@ -25,17 +25,23 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
+//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
+	@ResponseBody
+	public UsedCategory createCategory(@RequestBody UsedCategory body) {
+		return categoryService.createCategory(body.getName(),body.getParentId());
+	}
+	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<UsedCategory> getCategoryList() {
 		return categoryService.getCategoryList();
 	}
 	
-//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	@PostMapping
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public UsedCategory createCategory(@RequestBody UsedCategory body) {
-		return categoryService.createCategory(body.getName(),body.getParentId());
+	public List<UsedCategory> getCategoryByIdList(@RequestBody Integer id) {
+		return categoryService.getCategoryByIdList(id);
 	}
 	
 	@DeleteMapping

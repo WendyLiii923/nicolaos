@@ -17,12 +17,16 @@ public class CategoryService {
 	@Autowired
 	private CategoryDao categoryDao;
 	
+	public UsedCategory createCategory(String name, Integer parentId) {
+		return categoryDao.createCategory(name, parentId);
+	}
+	
 	public List<UsedCategory> getCategoryList() {
 		return categoryDao.getCategoryList();
 	}
 	
-	public UsedCategory createCategory(String name, Integer parentId) {
-		return categoryDao.createCategory(name, parentId);
+	public List<UsedCategory> getCategoryByIdList(Integer id) {
+		return categoryDao.getCategoryByIdList(id);
 	}
 	
 	public HashMap<String, String> deleteCategory(Integer id) {
