@@ -18,13 +18,13 @@ public class ProductDaoImpl implements ProductDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	private String selectAllProduct = "FROM com.java18.nicolaos.model.UsedProduct";
-	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=PRODUCTID";
+	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=:PRODUCTID";
 	private String selectProductByEarly = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME";
 	private String selectProductByLate = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME DESC";
 	private String selectProductOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE";
 	private String selectProductOrderByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE DESC";
-	private String selectProductByPriceZoneOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN START AND END ORDER BY PRICE";
-	private String selectProductByPriceZoneOrderByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN START AND END ORDER BY PRICE DESC";
+	private String selectProductByPriceZoneOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN :START AND :END ORDER BY PRICE";
+	private String selectProductByPriceZoneOrderByHighPrice = "FROM com.java18.nicolaos.model.UsedProduct WHERE PRICE BETWEEN :START AND :END ORDER BY PRICE DESC";
 	
 	public ProductDaoImpl() {
 		
@@ -97,8 +97,8 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<UsedProduct> getProductListByPriceZoneOrderByLowPrice(Integer start, Integer end) {
 		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByLowPrice, UsedProduct.class);
-		check.setParameter("PRICE", start);
-		check.setParameter("PRICE", end);
+		check.getParameter(start);
+		check.getParameter(end);
 		List<UsedProduct> list = check.list();
 		return list;
 	}
@@ -106,8 +106,8 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<UsedProduct> getProductListByPriceZoneOrderByHighPrice(Integer start, Integer end) {
 		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByHighPrice,UsedProduct.class);
-		check.setParameter("PRICE", start);
-		check.setParameter("PRICE", end);
+		check.getParameter(start);
+		check.getParameter(end);
 		List<UsedProduct> list = check.list();
 		return list;
 	}
