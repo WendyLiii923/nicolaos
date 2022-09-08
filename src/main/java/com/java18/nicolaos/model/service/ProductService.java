@@ -13,50 +13,48 @@ import com.java18.nicolaos.model.dao.ProductDao;
 @Service
 @Transactional
 public class ProductService {
-	
+
 	@Autowired
 	private ProductDao productDao;
-	
+
 	public UsedProduct createProduct(String name, Integer price, String content) {
 		return productDao.createProduct(name, price, content);
 	}
-	
-	public List<UsedProduct> getProductList() {
-		return productDao.getProductList();
+
+	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status) {
+		
+		if (categoryId == null) {
+			switch (status) {
+			case "低到高":
+				if (end != null) {
+					return productDao.getProductListByPriceZoneOrderByLowPrice(start, end);
+				} else {
+					return productDao.getProductListOrderByLowPrice();
+				}
+			case "高到低":
+				if (end != null) {
+					return productDao.getProductListByPriceZoneOrderByHighPrice(start, end);
+				} else {
+					return productDao.getProductListOrderByHighPrice();
+				}
+			case "新到舊":
+				return productDao.getProductListByLate();
+			case "舊到新":
+				return productDao.getProductListByEarly();
+			default: 
+				return productDao.getProductList();
+			}
+		} else {
+			return productDao.getProductListByCategoryId(categoryId);
+		}
 	}
-	
-	public List<UsedProduct> getProductListById(Integer id) {
-		return productDao.getProductListById(id);
-	}
-	
-	public List<UsedProduct> getProductListByEarly(){
-		return productDao.getProductListByEarly();
-	}
-	
-	public List<UsedProduct> getProductListByLate(){
-		return productDao.getProductListByLate();
-	}
-	
-	public List<UsedProduct> getProductListOrderByLowPrice(){
-		return productDao.getProductListOrderByLowPrice();
-	}
-	
-	public List<UsedProduct> getProductListOrderByHighPrice(){
-		return productDao.getProductListOrderByHighPrice();
-	}
-	
-	public List<UsedProduct> getProductListByPriceZoneOrderByLowPrice(Integer start, Integer end){
-		return productDao.getProductListByPriceZoneOrderByLowPrice(start, end);
-	}
-	
-	public List<UsedProduct> getProductListByPriceZoneOrderByHighPrice(Integer start, Integer end){
-		return productDao.getProductListByPriceZoneOrderByHighPrice(start, end);
-	}
-	
+
+
+
 	public HashMap<String, String> deleteProduct(Integer id) {
 		return productDao.deleteProduct(id);
 	}
-	
+
 	public UsedProduct updateProduct(UsedProduct usedProduct) {
 		return productDao.updateProduct(usedProduct);
 	}

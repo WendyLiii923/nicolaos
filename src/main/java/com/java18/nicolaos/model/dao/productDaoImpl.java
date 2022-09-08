@@ -19,6 +19,7 @@ public class ProductDaoImpl implements ProductDao{
 	private SessionFactory sessionFactory;
 	private String selectAllProduct = "FROM com.java18.nicolaos.model.UsedProduct";
 	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=:PRODUCTID";
+	private String selectProductByCategoryId = "FROM com.java18.nicolaos.model.UsedProduct WHERE CATEGORYID=:CATEGORYID";
 	private String selectProductByEarly = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME";
 	private String selectProductByLate = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME DESC";
 	private String selectProductOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE";
@@ -59,9 +60,9 @@ public class ProductDaoImpl implements ProductDao{
 	}
 	
 	@Override
-	public List<UsedProduct> getProductListById(Integer id) {
-		Query<UsedProduct> check = getSession().createQuery(selectProductById, UsedProduct.class);
-		check.setParameter("PRODUCTID", id);
+	public List<UsedProduct> getProductListByCategoryId(Integer categoryId) {
+		Query<UsedProduct> check = getSession().createQuery(selectProductByCategoryId, UsedProduct.class);
+		check.setParameter("CATEGORYID", categoryId);
 		List<UsedProduct> list = check.list();
 		return list;
 	}

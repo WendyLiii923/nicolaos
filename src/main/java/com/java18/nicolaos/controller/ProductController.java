@@ -34,50 +34,8 @@ public class ProductController {
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<UsedProduct> getProductList() {
-		return productService.getProductList();
-	}
-	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListById(@RequestBody Integer id) {
-		return productService.getProductListById(id);
-	}
-	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListByEarly(){
-		return productService.getProductListByEarly();
-	}
-	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListByLate(){
-		return productService.getProductListByLate();
-	}
-
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListOrderByLowPrice(){
-		return productService.getProductListOrderByLowPrice();
-	}
-
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListOrderByHighPrice(){
-		return productService.getProductListOrderByHighPrice();
-	}
-
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListByPriceZoneOrderByLowPrice(@RequestBody UsedProduct body){
-		return productService.getProductListByPriceZoneOrderByLowPrice(body.getPrice(), body.getPrice());
-	}
-
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<UsedProduct> getProductListByPriceZoneOrderByHighPrice(@RequestBody UsedProduct body){
-		return productService.getProductListByPriceZoneOrderByHighPrice(body.getPrice(), body.getPrice());
+	public List<UsedProduct> getProducts(@RequestBody UsedProduct body) {
+		return productService.getProducts(body.getCategoryid(), body.getPrice(), body.getPrice(), body.toString());
 	}
 	
 	@DeleteMapping

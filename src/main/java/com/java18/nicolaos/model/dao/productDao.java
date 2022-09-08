@@ -10,7 +10,7 @@ public interface ProductDao {
 	public UsedProduct createProduct(String name, Integer price, String content);
 	
 	public List<UsedProduct> getProductList();
-	public List<UsedProduct> getProductListById(Integer id);
+	public List<UsedProduct> getProductListByCategoryId(Integer categoryId);
 	public List<UsedProduct> getProductListByEarly();
 	public List<UsedProduct> getProductListByLate();
 	public List<UsedProduct> getProductListOrderByLowPrice();
