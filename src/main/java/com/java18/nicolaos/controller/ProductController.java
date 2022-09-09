@@ -29,12 +29,15 @@ public class ProductController {
 	@PostMapping
 	@ResponseBody
 	public UsedProduct createProduct(@RequestBody UsedProduct body) {
-		return productService.createProduct(body.getName(),body.getPrice(), body.getContent());
+		return productService.createProduct(body.getName(),body.getPrice(), body.getContent(), body.getMemberId(), body.getCategoryId());
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<UsedProduct> getProducts(@RequestParam Integer categoryId, @RequestParam Integer start, @RequestParam Integer end, @RequestParam String status) {
+	public List<UsedProduct> getProducts(@RequestParam(required = false) Integer categoryId, 
+			                             @RequestParam(required = false) Integer start, 
+			                             @RequestParam(required = false) Integer end, 
+			                             @RequestParam(required = false) String status) {
 		return productService.getProducts(categoryId, start, end, status);
 	}
 	

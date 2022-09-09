@@ -17,6 +17,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name ="used_product")
 public class UsedProduct {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private String name;
@@ -39,9 +42,7 @@ public class UsedProduct {
 		this.memberId = memberId;
 		this.categoryId = categoryId;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "id")
 	public Integer getId() {
 		return id;
@@ -98,11 +99,11 @@ public class UsedProduct {
 	}
 
 	@Column(name = "categoryId")
-	public Integer getCategoryid() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryid(Integer categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 

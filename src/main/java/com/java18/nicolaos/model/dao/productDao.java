@@ -7,7 +7,7 @@ import com.java18.nicolaos.model.UsedProduct;
 
 public interface ProductDao {
 	
-	public UsedProduct createProduct(String name, Integer price, String content);
+	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId);
 	
 	public List<UsedProduct> getProductList();
 	public List<UsedProduct> getProductListByCategoryId(Integer categoryId);

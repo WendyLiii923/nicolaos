@@ -38,12 +38,14 @@ public class ProductDaoImpl implements ProductDao{
 	
 
 	@Override
-	public UsedProduct createProduct(String name, Integer price, String content) {
+	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId) {
 		UsedProduct usedProduct = new UsedProduct();
 		try {
 			usedProduct.setName(name);
 			usedProduct.setPrice(price);
 			usedProduct.setContent(content);
+			usedProduct.setMemberId(memberId);
+			usedProduct.setCategoryId(categoryId);
 			getSession().save(usedProduct);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,8 +100,8 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<UsedProduct> getProductListByPriceZoneOrderByLowPrice(Integer start, Integer end) {
 		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByLowPrice, UsedProduct.class);
-		check.getParameter(start);
-		check.getParameter(end);
+		check.setParameter("START", start);
+		check.setParameter("END", end);
 		List<UsedProduct> list = check.list();
 		return list;
 	}
@@ -107,8 +109,8 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<UsedProduct> getProductListByPriceZoneOrderByHighPrice(Integer start, Integer end) {
 		Query<UsedProduct> check = getSession().createQuery(selectProductByPriceZoneOrderByHighPrice,UsedProduct.class);
-		check.getParameter(start);
-		check.getParameter(end);
+		check.setParameter("START", start);
+		check.setParameter("END", end);
 		List<UsedProduct> list = check.list();
 		return list;
 	}

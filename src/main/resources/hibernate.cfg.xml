@@ -13,8 +13,15 @@
     <!-- need to open this line during executing test -->
     <!--         <property name="current_session_context_class">thread</property> -->
 
-    <mapping class="com.java18.nicolaos.model.User"/>
+    <mapping class="com.java18.nicolaos.model.Members"/>
+    <mapping class="com.java18.nicolaos.model.UsedCart"/>
+    <mapping class="com.java18.nicolaos.model.UsedCartDetail"/>
     <mapping class="com.java18.nicolaos.model.UsedCategory"/>
+    <mapping class="com.java18.nicolaos.model.UsedChat"/>
+    <mapping class="com.java18.nicolaos.model.UsedCollect"/>
+    <mapping class="com.java18.nicolaos.model.UsedOrder"/>
+    <mapping class="com.java18.nicolaos.model.UsedOrderDetail"/>
+    <mapping class="com.java18.nicolaos.model.UsedProduct"/>
 
 
     <!--     	article area          -->

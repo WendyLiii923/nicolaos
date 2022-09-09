@@ -17,8 +17,8 @@ public class ProductService {
 	@Autowired
 	private ProductDao productDao;
 
-	public UsedProduct createProduct(String name, Integer price, String content) {
-		return productDao.createProduct(name, price, content);
+	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId) {
+		return productDao.createProduct(name, price, content, memberId, categoryId);
 	}
 
 	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status) {
@@ -26,13 +26,13 @@ public class ProductService {
 		if (categoryId == null) {
 			switch (status) {
 			case "低到高":
-				if (end != null) {
+				if (start != null && end != null) {
 					return productDao.getProductListByPriceZoneOrderByLowPrice(start, end);
 				} else {
 					return productDao.getProductListOrderByLowPrice();
 				}
 			case "高到低":
-				if (end != null) {
+				if (start != null && end != null) {
 					return productDao.getProductListByPriceZoneOrderByHighPrice(start, end);
 				} else {
 					return productDao.getProductListOrderByHighPrice();

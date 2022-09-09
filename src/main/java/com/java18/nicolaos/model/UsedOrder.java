@@ -17,6 +17,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name = "used_order")
 public class UsedOrder {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private Integer memberId;
@@ -39,8 +42,7 @@ public class UsedOrder {
 		this.shippingFee = shippingFee;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "id")
 	public Integer getId() {
 		return id;

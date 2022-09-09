@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Table(name="members")
 public class Members {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer	id;
     private String name;
 
@@ -23,8 +25,6 @@ public class Members {
 		this.name = name;
 	}
 
-	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="member_id")
     public Integer getId() {
         return id;
