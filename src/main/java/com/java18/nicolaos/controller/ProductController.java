@@ -34,8 +34,8 @@ public class ProductController {
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<UsedProduct> getProducts(@RequestBody UsedProduct body) {
-		return productService.getProducts(body.getCategoryid(), body.getPrice(), body.getPrice(), body.toString());
+	public List<UsedProduct> getProducts(@RequestParam Integer categoryId, @RequestParam Integer start, @RequestParam Integer end, @RequestParam String status) {
+		return productService.getProducts(categoryId, start, end, status);
 	}
 	
 	@DeleteMapping
