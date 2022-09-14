@@ -1,0 +1,50 @@
+package com.java18.nicolaos.model.dao;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.java18.nicolaos.model.UsedCart;
+
+@SuppressWarnings("deprecation")
+@Repository
+public class CartDaoImpl implements CartDao{
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	private String selectCartIdByMemberId ="FROM com.java18.nicolaos.model.UsedCart WHERE MEMBERID=:MEMBERID";
+	
+	private Session getsession() {
+		Session session = sessionFactory.getCurrentSession();
+		return session;
+	}
+	
+	public CartDaoImpl() {
+		
+	}
+	
+	@Override
+	public UsedCart getCartByMemberId(Integer memberId) {
+		Query<UsedCart> check = getsession().createQuery(selectCartIdByMemberId, UsedCart.class);
+		check.setParameter("MEMBERID", memberId);
+		UsedCart aCart = check.setMaxResults(1)
+				              .getResultList()
+				              .stream()
+				              .findFirst()
+				              .orElse(null);
+		return aCart;
+		
+//		Query<UsedCart> check = getsession().createQuery(selectCartIdByMemberId, UsedCart.class);
+//		try {
+//			check.setParameter("MEMBERID", memberId);
+//			UsedCart aCart = check.getSingleResult();
+//			return aCart;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+	}
+
+}
