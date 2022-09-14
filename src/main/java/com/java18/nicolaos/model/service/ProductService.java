@@ -22,7 +22,7 @@ public class ProductService {
 	}
 
 	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status) {
-		
+
 		if (categoryId == null) {
 			switch (status) {
 			case "低到高":
@@ -47,9 +47,9 @@ public class ProductService {
 		} else {
 			return productDao.getProductListByCategoryId(categoryId);
 		}
+	
+
 	}
-
-
 
 	public HashMap<String, String> deleteProduct(Integer id) {
 		return productDao.deleteProduct(id);

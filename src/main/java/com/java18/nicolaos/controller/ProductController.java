@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java18.nicolaos.model.UsedProduct;
+import com.java18.nicolaos.model.service.CategoryService;
 import com.java18.nicolaos.model.service.ProductService;
 
 @Controller
@@ -24,12 +26,18 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CategoryService categoryService;
 	
-//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	@PostMapping
-	@ResponseBody
-	public UsedProduct createProduct(@RequestBody UsedProduct body) {
-		return productService.createProduct(body.getName(),body.getPrice(), body.getContent(), body.getMemberId(), body.getCategoryId());
+	@RequestMapping("/showProduct")
+	public String list(Model model, 
+			@RequestParam(required = false) Integer categoryId, 
+            @RequestParam(required = false) Integer start, 
+            @RequestParam(required = false) Integer end, 
+            @RequestParam(defaultValue = "") String status) {
+		model.addAttribute("productList", productService.getProducts(categoryId, start, end, status));
+		model.addAttribute("categoryList", categoryService.getCategoryList());
+		return "/Category";
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,6 +47,13 @@ public class ProductController {
 			                             @RequestParam(required = false) Integer end, 
 			                             @RequestParam(required = false) String status) {
 		return productService.getProducts(categoryId, start, end, status);
+	}
+	
+//	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
+	@ResponseBody
+	public UsedProduct createProduct(@RequestBody UsedProduct body) {
+		return productService.createProduct(body.getName(),body.getPrice(), body.getContent(), body.getMemberId(), body.getCategoryId());
 	}
 	
 	@DeleteMapping

@@ -27,13 +27,15 @@ public class UsedProduct {
 	private String content;
 	private Integer memberId;
 	private Integer categoryId;
+	private String cover;
 	
 	public UsedProduct() {
 		
 	}
 
 	public UsedProduct(Integer id, Timestamp createTime, String name, Integer price, String content, Integer memberId,
-			Integer categoryId) {
+			Integer categoryId, String cover) {
+		super();
 		this.id = id;
 		this.createTime = createTime;
 		this.name = name;
@@ -41,8 +43,10 @@ public class UsedProduct {
 		this.content = content;
 		this.memberId = memberId;
 		this.categoryId = categoryId;
+		this.cover = cover;
 	}
-	
+
+
 	@Column(name = "id")
 	public Integer getId() {
 		return id;
@@ -107,10 +111,20 @@ public class UsedProduct {
 		this.categoryId = categoryId;
 	}
 
+	@Column(name = "cover")
+	public String getCover() {
+		return cover;
+	}
+	
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
+
 	@Override
 	public String toString() {
 		return "UsedProduct [id=" + id + ", createTime=" + createTime + ", name=" + name + ", price=" + price
-				+ ", content=" + content + ", memberId=" + memberId + ", categoryId=" + categoryId + "]";
+				+ ", content=" + content + ", memberId=" + memberId + ", categoryId=" + categoryId + ", cover=" + cover
+				+ "]";
 	}
-	
+
 }

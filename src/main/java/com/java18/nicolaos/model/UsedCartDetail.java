@@ -22,6 +22,7 @@ public class UsedCartDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	private Integer cartId;
 	private Integer productId;
 	private Integer productQty;
 	
@@ -29,10 +30,11 @@ public class UsedCartDetail {
 		
 	}
 
-	public UsedCartDetail(Integer id, Timestamp createTime, Integer productId, Integer productQty) {
+	public UsedCartDetail(Integer id, Timestamp createTime, Integer cartId, Integer productId, Integer productQty) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
+		this.cartId = cartId;
 		this.productId = productId;
 		this.productQty = productQty;
 	}
@@ -56,6 +58,16 @@ public class UsedCartDetail {
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
+	
+	@Column(name = "cartId")	
+	public Integer getCartId() {
+		return cartId;
+	}
+	
+	public void setCartId(Integer cartId) {
+		this.cartId = cartId;
+	}
+
 
 	@Column(name = "productId")
 	public Integer getProductId() {
@@ -77,8 +89,8 @@ public class UsedCartDetail {
 
 	@Override
 	public String toString() {
-		return "UsedCartDetail [id=" + id + ", createTime=" + createTime + ", productId=" + productId + ", productQty="
-				+ productQty + "]";
+		return "UsedCartDetail [id=" + id + ", createTime=" + createTime + ", cartId=" + cartId + ", productId="
+				+ productId + ", productQty=" + productQty + "]";
 	}
-	
+
 }

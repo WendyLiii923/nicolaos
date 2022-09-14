@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.InternalResourceView;
 
-@Configuration
+//@Configuration
 public class ArticleViewJavaConfig {
 	
 	@Bean
@@ -15,19 +15,19 @@ public class ArticleViewJavaConfig {
 		return view;
 		}
 	
-	@Bean
-	public View articleCategoryPage() {
-		InternalResourceView view = new InternalResourceView();
-		view.setUrl("/WEB-INF/pages/category.jsp");
-		return view;
-		}
-	
-	@Bean
-	public View postListPage() {
-		InternalResourceView view = new InternalResourceView();
-		view.setUrl("/WEB-INF/pages/article.jsp");
-		return view;
-		}
+//	@Bean
+//	public View articleCategoryPage() {
+//		InternalResourceView view = new InternalResourceView();
+//		view.setUrl("/WEB-INF/pages/category.jsp");
+//		return view;
+//		}
+//	
+//	@Bean
+//	public View postListPage() {
+//		InternalResourceView view = new InternalResourceView();
+//		view.setUrl("/WEB-INF/pages/article.jsp");
+//		return view;
+//		}
 	
 	// AJAX Resource
 

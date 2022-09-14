@@ -25,6 +25,13 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
+//	@RequestMapping("/showCategory")
+//	public String list(Model model) {
+//		model.addAttribute("categoryList", categoryService.getCategoryList());
+//		return "/Category";
+//	}
+	
+	
 //	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@PostMapping
 	@ResponseBody
