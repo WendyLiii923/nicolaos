@@ -25,8 +25,9 @@ public class CartDaoImpl implements CartDao{
 		
 	}
 	
+
 	@Override
-	public UsedCart getCartByMemberId(Integer memberId) {
+	public UsedCart getUncheckOutCart(Integer memberId) {
 		Query<UsedCart> check = getsession().createQuery(selectCartIdByMemberId, UsedCart.class);
 		check.setParameter("MEMBERID", memberId);
 		UsedCart aCart = check.setMaxResults(1)
@@ -35,7 +36,7 @@ public class CartDaoImpl implements CartDao{
 				              .findFirst()
 				              .orElse(null);
 		return aCart;
-		
+		}
 //		Query<UsedCart> check = getsession().createQuery(selectCartIdByMemberId, UsedCart.class);
 //		try {
 //			check.setParameter("MEMBERID", memberId);
@@ -45,6 +46,19 @@ public class CartDaoImpl implements CartDao{
 //			e.printStackTrace();
 //		}
 //		return null;
+//	}
+
+	@Override
+	public UsedCart createCart(Integer memberId) {
+		return null;
 	}
+
+	@Override
+	public UsedCart updateStatus(Integer id) {
+		return null;
+	}
+
+
+	
 
 }

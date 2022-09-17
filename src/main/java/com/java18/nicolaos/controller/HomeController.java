@@ -1,4 +1,4 @@
-package com.java18.nicolaos.controller;
+ package com.java18.nicolaos.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

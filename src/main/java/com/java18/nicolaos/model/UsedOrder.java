@@ -23,22 +23,19 @@ public class UsedOrder {
 	private Integer id;
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private Integer memberId;
-	private Integer productQty;
-	private Integer price;
+	private Integer totalPrice;
 	private Integer shippingFee;
 	
 	public UsedOrder() {
 		
 	}
 
-	public UsedOrder(Integer id, Timestamp createTime, Integer memberId, Integer productQty, Integer price,
+	public UsedOrder(Integer id, Timestamp createTime, Integer memberId, Integer totalPrice,
 			Integer shippingFee) {
-		super();
 		this.id = id;
 		this.createTime = createTime;
 		this.memberId = memberId;
-		this.productQty = productQty;
-		this.price = price;
+		this.totalPrice = totalPrice;
 		this.shippingFee = shippingFee;
 	}
 
@@ -71,22 +68,13 @@ public class UsedOrder {
 		this.memberId = memberId;
 	}
 
-	@Column(name = "productQty")
-	public Integer getProductQty() {
-		return productQty;
+	@Column(name = "totalPrice")
+	public Integer getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setProductQty(Integer productQty) {
-		this.productQty = productQty;
-	}
-	
-	@Column(name = "price")
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	@Column(name = "shippingFee")
@@ -100,8 +88,7 @@ public class UsedOrder {
 
 	@Override
 	public String toString() {
-		return "UsedOrder [id=" + id + ", createTime=" + createTime + ", memberId=" + memberId + ", productQty="
-				+ productQty + ", price=" + price + ", shippingFee=" + shippingFee + "]";
+		return "UsedOrder [id=" + id + ", createTime=" + createTime + ", memberId=" + memberId + ", totalPrice=" + totalPrice + ", shippingFee=" + shippingFee + "]";
 	}
 	
 }

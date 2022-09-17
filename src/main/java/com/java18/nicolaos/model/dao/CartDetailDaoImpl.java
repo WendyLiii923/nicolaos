@@ -27,13 +27,16 @@ public class CartDetailDaoImpl implements CartDetailDao {
 	public CartDetailDaoImpl() {
 	
 	}
-	
+
 	@Override
-	public List<UsedCartDetail> getProductsFromCart(Integer cartId) {
-		Query<UsedCartDetail> check = getSession().createQuery(selectProductsByCartId, UsedCartDetail.class);
-		check.setParameter("CARTID", cartId);
-		List<UsedCartDetail> list = check.list();
-		return list;
+	public UsedCartDetail createCartDetail(Integer cartId, Integer productId, Integer productQty) {
+		return null;
 	}
+
+	@Override
+	public List<UsedCartDetail> getCartDetail(Integer cartId, Integer productId) {
+		return null;
+	}
+	
 
 }

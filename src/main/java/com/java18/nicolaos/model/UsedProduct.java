@@ -28,13 +28,14 @@ public class UsedProduct {
 	private Integer memberId;
 	private Integer categoryId;
 	private String cover;
+	private String status;
 	
 	public UsedProduct() {
 		
 	}
 
 	public UsedProduct(Integer id, Timestamp createTime, String name, Integer price, String content, Integer memberId,
-			Integer categoryId, String cover) {
+			Integer categoryId, String cover, String status) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
@@ -44,7 +45,10 @@ public class UsedProduct {
 		this.memberId = memberId;
 		this.categoryId = categoryId;
 		this.cover = cover;
+		this.status = status;
 	}
+
+
 
 
 	@Column(name = "id")
@@ -120,11 +124,20 @@ public class UsedProduct {
 		this.cover = cover;
 	}
 
+	@Column(name = "status")
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "UsedProduct [id=" + id + ", createTime=" + createTime + ", name=" + name + ", price=" + price
 				+ ", content=" + content + ", memberId=" + memberId + ", categoryId=" + categoryId + ", cover=" + cover
-				+ "]";
+				+ ", status=" + status + "]";
 	}
 
 }

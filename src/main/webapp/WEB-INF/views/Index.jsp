@@ -9,8 +9,7 @@
 </head>
 <body>
 	<div>
-<%-- 		<a href="<c:url value='/CategoryService/showCategory' />">分類</a><br> --%>
-		<a href="<c:url value='/ProductService/showProduct' />">商品頁</a><br>
+		<a href="<c:url value='/ProductService/showProducts' />">二手商品頁</a><br>
 	</div>
 
 </body>

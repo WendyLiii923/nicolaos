@@ -5,6 +5,8 @@ import java.util.List;
 import com.java18.nicolaos.model.UsedCartDetail;
 
 public interface CartDetailDao {
-	public List<UsedCartDetail> getProductsFromCart(Integer id);
+	public UsedCartDetail createCartDetail(Integer cartId, Integer productId, Integer productQty);
+	
+	public List<UsedCartDetail> getCartDetail(Integer cartId, Integer productId);
 	
 }

@@ -12,13 +12,13 @@
 	<div align="left">
 		<h3>分類</h3>
 		<h4>
-			<a href="<c:url value='/ProductService/showProduct' />">全部商品</a>
+			<a href="<c:url value='/ProductService/showProducts' />">全部商品</a>
 		</h4>
 		<table border="1">
 			<c:forEach var="category" items="${categoryList}">
 				<tr>
 					<td><a
-						href="<c:url value='/ProductService/showProduct'>
+						href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
 					</c:url>">
 							${category.name} </a></td>
@@ -27,13 +27,45 @@
 		</table>
 	</div>
 	<div align="center">
+	<h3>
+		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="status" value="新到舊"/>
+					</c:url>">新到舊
+		</a> | 
+		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="status" value="舊到新"/>
+					</c:url>">舊到新
+		</a> | 
+		
+		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="status" value="低到高"/>
+					</c:url>">低到高
+		</a> | 
+		
+		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="status" value="高到低"/>
+					</c:url>">高到低
+		</a><br>
+	</h3>
+		<form action="<c:url value='/ProductService/showProducts' />" method="GET">
+    		最低價:<input type='text' name='start'  value='${start}' >
+  			最高價:<input type='text' name='end'  value='${end}' >
+  			<input type="submit" value="確定"><P/>
+		</form>
+		
 		<table border="1">
-			<c:forEach var="product" items="${productList}">
-				<tr>
-					<td>${product.name}</td>
-					<td>${product.price}</td>
-				</tr>
-			</c:forEach>
+		<c:forEach var="product" items="${productList}">
+			<tr>
+				<td>商品圖片${product.cover}</td>
+				<td><a href="<c:url value='/ProductService/showProduct'>
+					<c:param name="productId" value="${product.id}"/>
+					</c:url>">${product.name}
+					</a></td>
+				<td>價格: ${product.price}</td>
+			</tr>
+		</c:forEach>
 		</table>
 	</div>
 </body>

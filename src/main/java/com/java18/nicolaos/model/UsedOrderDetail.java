@@ -24,18 +24,22 @@ public class UsedOrderDetail {
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
 	private Integer orderId;
 	private Integer productId;
+	private Integer productQty;
+	
 	
 	public UsedOrderDetail() {
 		
 	}
 
-	public UsedOrderDetail(Integer id, Timestamp createTime, Integer orderId, Integer productId) {
+	public UsedOrderDetail(Integer id, Timestamp createTime, Integer orderId, Integer productId, Integer productQty) {
 		super();
 		this.id = id;
 		this.createTime = createTime;
 		this.orderId = orderId;
 		this.productId = productId;
+		this.productQty = productQty;
 	}
+
 
 	@Column(name = "id")
 	public Integer getId() {
@@ -73,11 +77,20 @@ public class UsedOrderDetail {
 	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
+	
+	@Column(name = "productQty")
+	public Integer getProductQty() {
+		return productQty;
+	}
+	
+	public void setProductQty(Integer productQty) {
+		this.productQty = productQty;
+	}
 
 	@Override
 	public String toString() {
 		return "UsedOrderDetail [id=" + id + ", createTime=" + createTime + ", orderId=" + orderId + ", productId="
-				+ productId + "]";
+				+ productId + ", productQty=" + productQty + "]";
 	}
 	
 }

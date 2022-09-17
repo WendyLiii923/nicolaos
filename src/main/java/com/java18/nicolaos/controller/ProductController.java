@@ -29,24 +29,40 @@ public class ProductController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping("/showProduct")
+	@RequestMapping("/showProducts")
 	public String list(Model model, 
 			@RequestParam(required = false) Integer categoryId, 
+			@RequestParam(required = false) Integer parentId,
             @RequestParam(required = false) Integer start, 
             @RequestParam(required = false) Integer end, 
             @RequestParam(defaultValue = "") String status) {
-		model.addAttribute("productList", productService.getProducts(categoryId, start, end, status));
+		model.addAttribute("productList", productService.getProducts(categoryId, start, end, status, parentId));
 		model.addAttribute("categoryList", categoryService.getCategoryList());
 		return "/Category";
 	}
 	
+	@RequestMapping("/showProduct")
+	public String product(Model model, 
+			@RequestParam(required = false) Integer productId,
+			@RequestParam(required = false) Integer categoryId,
+			@RequestParam(required = false) Integer parentId,
+            @RequestParam(required = false) Integer start, 
+            @RequestParam(required = false) Integer end, 
+            @RequestParam(defaultValue = "") String status) {
+		model.addAttribute("product", productService.getProduct(productId));
+		model.addAttribute("productList", productService.getProducts(categoryId, start, end, status, parentId));
+		model.addAttribute("categoryList", categoryService.getCategoryList());
+		return "/Product";
+	}
+	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<UsedProduct> getProducts(@RequestParam(required = false) Integer categoryId, 
+	public List<UsedProduct> getProducts(@RequestParam(required = false) Integer categoryId,
+  										 @RequestParam(required = false) Integer parentId,
 			                             @RequestParam(required = false) Integer start, 
 			                             @RequestParam(required = false) Integer end, 
 			                             @RequestParam(required = false) String status) {
-		return productService.getProducts(categoryId, start, end, status);
+		return productService.getProducts(categoryId, start, end, status, parentId);
 	}
 	
 //	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -20,32 +20,52 @@ public class ProductService {
 	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId) {
 		return productDao.createProduct(name, price, content, memberId, categoryId);
 	}
+	
+	public UsedProduct getProduct(Integer id) {
+		return productDao.getProduct(id);
+	}
 
-	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status) {
+	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status, Integer parentId) {
 
 		if (categoryId == null) {
 			switch (status) {
 			case "低到高":
-				if (start != null && end != null) {
-					return productDao.getProductListByPriceZoneOrderByLowPrice(start, end);
-				} else {
-					return productDao.getProductListOrderByLowPrice();
-				}
+				return productDao.getProductListOrderByLowPrice();
 			case "高到低":
-				if (start != null && end != null) {
-					return productDao.getProductListByPriceZoneOrderByHighPrice(start, end);
-				} else {
-					return productDao.getProductListOrderByHighPrice();
-				}
+				return productDao.getProductListOrderByHighPrice();				
 			case "新到舊":
 				return productDao.getProductListByLate();
 			case "舊到新":
 				return productDao.getProductListByEarly();
+			case "價格區間":
+				if (start != null && end != null) {
+					return productDao.getProductListByPriceZone(start, end);
+				}
 			default: 
 				return productDao.getProductList();
 			}
 		} else {
-			return productDao.getProductListByCategoryId(categoryId);
+			switch (status) {
+			case "低到高":
+				return productDao.getProductListByCategoryIdOrderByLowPrice(categoryId);
+			case "高到低":
+				return productDao.getProductListByCategoryIdOrderByHighPrice(categoryId);
+			case "新到舊":
+				return productDao.getProductListByCategoryIdOrderByLate(categoryId);
+			case "舊到新":
+				return productDao.getProductListByCategoryIdOrderByEarly(categoryId);
+			case "價格區間":
+				if (start != null && end != null) {
+					return productDao.getProductListByPriceZoneAndCategoryId(start, end, categoryId);
+				}
+			default: 
+//				if (parentId == null) {
+//					return productDao.getProductListByParentId(categoryId);
+//				}else {
+					return productDao.getProductListByCategoryId(categoryId);
+//				}
+			}
+			
 		}
 	
 
