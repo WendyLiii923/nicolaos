@@ -1,5 +1,7 @@
 package com.java18.nicolaos.model.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,8 +16,8 @@ public class CartDaoImpl implements CartDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	private String selectCartIdByMemberId ="FROM com.java18.nicolaos.model.UsedCart WHERE MEMBERID=:MEMBERID";
-	
+	private String selectCartByMemberId ="FROM com.java18.nicolaos.model.UsedCart WHERE MEMBERID=:MEMBERID AND STATUS=TRUE";
+	private String selectCartById="FROM com.java18.nicolaos.model.UsedCart WHERE CARTID=:CARTID AND STATUS=TRUE";
 	private Session getsession() {
 		Session session = sessionFactory.getCurrentSession();
 		return session;
@@ -24,11 +26,22 @@ public class CartDaoImpl implements CartDao{
 	public CartDaoImpl() {
 		
 	}
-	
+
+	@Override
+	public UsedCart createCart(Integer memberId) {
+		UsedCart usedCart = new UsedCart();
+		try {
+			usedCart.setMemberId(memberId);
+			getsession().save(usedCart);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usedCart;
+	}	
 
 	@Override
 	public UsedCart getUncheckOutCart(Integer memberId) {
-		Query<UsedCart> check = getsession().createQuery(selectCartIdByMemberId, UsedCart.class);
+		Query<UsedCart> check = getsession().createQuery(selectCartByMemberId, UsedCart.class);
 		check.setParameter("MEMBERID", memberId);
 		UsedCart aCart = check.setMaxResults(1)
 				              .getResultList()
@@ -48,14 +61,20 @@ public class CartDaoImpl implements CartDao{
 //		return null;
 //	}
 
-	@Override
-	public UsedCart createCart(Integer memberId) {
-		return null;
-	}
 
 	@Override
 	public UsedCart updateStatus(Integer id) {
-		return null;
+		try {
+			Query<UsedCart> check = getsession().createQuery(selectCartById, UsedCart.class);
+			check.setParameter("CARTId", id);
+			List<UsedCart> list = check.list();
+			UsedCart updateItem = list.get(0);
+			updateItem.setStatus(false);
+			getsession().save(updateItem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return updateStatus(id);
 	}
 
 

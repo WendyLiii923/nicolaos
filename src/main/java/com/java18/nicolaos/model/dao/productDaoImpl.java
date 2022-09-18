@@ -20,9 +20,9 @@ public class ProductDaoImpl implements ProductDao{
 	
 	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=:PRODUCTID";
 	private String selectAllProduct = "FROM com.java18.nicolaos.model.UsedProduct";
-	private String selectProductByParentId= "FROM com.java18.nicolaos.model.UsedCategory, UsedProduct AS P AS G "
-			+ "WHERE P.CATEGORYID=G.CATEGORYID "
-			+ "AND G.PARENTID=:CATEGORYID";
+	private String selectProductByParentId= "FROM com.java18.nicolaos.model.UsedCategory AS C, UsedProduct AS P "
+			+ "WHERE P.CATEGORYID=C.ID "
+			+ "AND C.PARENTID=:CATEGORYID";
 	private String selectProductByEarly = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME";
 	private String selectProductByLate = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY CREATETIME DESC";
 	private String selectProductOrderByLowPrice = "FROM com.java18.nicolaos.model.UsedProduct ORDER BY PRICE";

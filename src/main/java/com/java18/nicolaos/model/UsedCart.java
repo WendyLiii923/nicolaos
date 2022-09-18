@@ -30,7 +30,6 @@ public class UsedCart {
 	}
 	
 	public UsedCart(Integer id, Timestamp createTime, Boolean status, Integer memberId) {
-		super();
 		this.id = id;
 		this.createTime = createTime;
 		this.status = status;
