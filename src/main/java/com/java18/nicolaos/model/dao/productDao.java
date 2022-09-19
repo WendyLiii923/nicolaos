@@ -15,19 +15,8 @@ public interface ProductDao {
 	public List<UsedProduct> getProductList();
 	// 查父層分類商品清單
 	public List<UsedProduct> getProductListByParentId(Integer categoryId);
-	public List<UsedProduct> getProductListByEarly();
-	public List<UsedProduct> getProductListByLate();
-	public List<UsedProduct> getProductListOrderByLowPrice();
-	public List<UsedProduct> getProductListOrderByHighPrice();
-	public List<UsedProduct> getProductListByPriceZone(Integer start, Integer end);
-	
-	// 查子層分類商品清單
-	public List<UsedProduct> getProductListByCategoryId(Integer categoryId);
-	public List<UsedProduct> getProductListByCategoryIdOrderByEarly(Integer categoryId);
-	public List<UsedProduct> getProductListByCategoryIdOrderByLate(Integer categoryId);
-	public List<UsedProduct> getProductListByCategoryIdOrderByLowPrice(Integer categoryId);
-	public List<UsedProduct> getProductListByCategoryIdOrderByHighPrice(Integer categoryId);
-	public List<UsedProduct> getProductListByPriceZoneAndCategoryId(Integer start, Integer end, Integer categoryId);
+	// 用分類或排序或價格區間 查詢商品清單
+	public List<UsedProduct> getProductListByQuery(Integer categoryId, Integer start, Integer end, String sortField, String sort);
 	
 	// 刪除商品
 	public HashMap<String, String> deleteProduct(Integer id);

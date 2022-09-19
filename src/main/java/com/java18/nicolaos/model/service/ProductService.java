@@ -20,55 +20,47 @@ public class ProductService {
 	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId) {
 		return productDao.createProduct(name, price, content, memberId, categoryId);
 	}
-	
+
 	public UsedProduct getProduct(Integer id) {
 		return productDao.getProduct(id);
 	}
 
-	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status, Integer parentId) {
-
-		if (categoryId == null) {
+	public List<UsedProduct> getProducts(Integer categoryId, Integer start, Integer end, String status) {
+		String sortField1 = "PRICE";
+		String sortField2 = "CREATETIME";
+		String sort1 = "ASC";
+		String sort2 = "DESC";
+		if (categoryId != null) {
 			switch (status) {
 			case "低到高":
-				return productDao.getProductListOrderByLowPrice();
+				return productDao.getProductListByQuery(categoryId, start, end, sortField1, sort1);
 			case "高到低":
-				return productDao.getProductListOrderByHighPrice();				
+				return productDao.getProductListByQuery(categoryId, start, end, sortField1, sort2);
 			case "新到舊":
-				return productDao.getProductListByLate();
+				return productDao.getProductListByQuery(categoryId, start, end, sortField2, sort2);
 			case "舊到新":
-				return productDao.getProductListByEarly();
+				return productDao.getProductListByQuery(categoryId, start, end, sortField2, sort1);
 			case "價格區間":
-				if (start != null && end != null) {
-					return productDao.getProductListByPriceZone(start, end);
-				}
-			default: 
+				return productDao.getProductListByQuery(categoryId, start, end, null, null);
+			default:
+				return productDao.getProductListByQuery(categoryId, start, end, null, null);
+			}
+		}else {
+			switch (status) {
+			case "低到高":
+				return productDao.getProductListByQuery(categoryId, start, end, sortField1, sort1);
+			case "高到低":
+				return productDao.getProductListByQuery(categoryId, start, end, sortField1, sort2);
+			case "新到舊":
+				return productDao.getProductListByQuery(categoryId, start, end, sortField2, sort2);
+			case "舊到新":
+				return productDao.getProductListByQuery(categoryId, start, end, sortField2, sort1);
+			case "價格區間":
+				return productDao.getProductListByQuery(categoryId, start, end, null, null);
+			default:
 				return productDao.getProductList();
 			}
-		} else {
-			switch (status) {
-			case "低到高":
-				return productDao.getProductListByCategoryIdOrderByLowPrice(categoryId);
-			case "高到低":
-				return productDao.getProductListByCategoryIdOrderByHighPrice(categoryId);
-			case "新到舊":
-				return productDao.getProductListByCategoryIdOrderByLate(categoryId);
-			case "舊到新":
-				return productDao.getProductListByCategoryIdOrderByEarly(categoryId);
-			case "價格區間":
-				if (start != null && end != null) {
-					return productDao.getProductListByPriceZoneAndCategoryId(start, end, categoryId);
-				}
-			default: 
-//				if (parentId == null) {
-//					return productDao.getProductListByParentId(categoryId);
-//				}else {
-					return productDao.getProductListByCategoryId(categoryId);
-//				}
-			}
-			
 		}
-	
-
 	}
 
 	public HashMap<String, String> deleteProduct(Integer id) {

@@ -49,9 +49,8 @@
 					</c:url>">高到低
 		</a><br>
 	</h3>
-		<form action="<c:url value='/ProductService/showProducts'> 
-				<c:param name="status" value="價格區間"/>
-			</c:url>" method="GET">
+		<form action="<c:url value='/ProductService/showProducts' />" method="GET">
+			<input type="hidden" name="categoryId" value="${category.id}" >
 			<input type="hidden" name='status'  value='價格區間' >
     		最低價:<input type='text' name='start'  value='${start}' >
   			最高價:<input type='text' name='end'  value='${end}' >

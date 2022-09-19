@@ -25,8 +25,8 @@ public class CategoryService {
 		return categoryDao.getCategoryList();
 	}
 	
-	public List<UsedCategory> getCategoryByIdList(Integer id) {
-		return categoryDao.getCategoryByIdList(id);
+	public UsedCategory getCategoryById(Integer id) {
+		return categoryDao.getCategoryById(id);
 	}
 	
 	public HashMap<String, String> deleteCategory(Integer id) {

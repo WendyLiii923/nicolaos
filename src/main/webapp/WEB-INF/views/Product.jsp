@@ -35,7 +35,7 @@
 			>
 			<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${product.categoryId}"/>
-					</c:url>">子層category.name</a>
+					</c:url>">子層${category.name}</a>
 			>
 			${product.name}
 		</h4>

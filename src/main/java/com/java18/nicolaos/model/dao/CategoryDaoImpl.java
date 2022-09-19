@@ -3,7 +3,7 @@ package com.java18.nicolaos.model.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,13 @@ import org.springframework.stereotype.Repository;
 
 import com.java18.nicolaos.model.UsedCategory;
 
-@SuppressWarnings("deprecation")
 @Repository
 public class CategoryDaoImpl implements CategoryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	private final String selectAllCategory = "FROM com.java18.nicolaos.model.UsedCategory";
-	private final String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=:CATEGORYID";
+	private String selectAllCategory = "FROM com.java18.nicolaos.model.UsedCategory";
+	private String selectCategoryById = "FROM com.java18.nicolaos.model.UsedCategory WHERE ID=:CATEGORYID";
 
 	public CategoryDaoImpl() {
 
@@ -46,17 +45,20 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Override
 	public List<UsedCategory> getCategoryList() {
 		Query<UsedCategory> check = getSession().createQuery(selectAllCategory, UsedCategory.class);
-
 		List<UsedCategory> list = check.list();
 		return list;
 	}
 	
 	@Override
-	public List<UsedCategory> getCategoryByIdList(Integer id) {
+	public UsedCategory getCategoryById(Integer id) {
 		Query<UsedCategory> check = getSession().createQuery(selectCategoryById, UsedCategory.class);
 		check.setParameter("CATEGORYID", id);
-		List<UsedCategory> list = check.list();
-		return list;
+		UsedCategory aCategory = check.setMaxResults(1)
+								 .getResultList()
+								 .stream()
+								 .findFirst()
+								 .orElse(null);
+		return aCategory;
 	}
 
 	@Override

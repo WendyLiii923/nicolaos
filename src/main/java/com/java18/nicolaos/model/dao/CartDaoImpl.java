@@ -2,7 +2,7 @@ package com.java18.nicolaos.model.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import com.java18.nicolaos.model.UsedCart;
 
-@SuppressWarnings("deprecation")
 @Repository
 public class CartDaoImpl implements CartDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	private String selectCartByMemberId ="FROM com.java18.nicolaos.model.UsedCart WHERE MEMBERID=:MEMBERID AND STATUS=TRUE";
-	private String selectCartById="FROM com.java18.nicolaos.model.UsedCart WHERE CARTID=:CARTID AND STATUS=TRUE";
+	private final String selectCartByMemberId ="FROM com.java18.nicolaos.model.UsedCart WHERE MEMBERID=:MEMBERID AND STATUS=TRUE";
+	private final String selectCartById="FROM com.java18.nicolaos.model.UsedCart WHERE CARTID=:CARTID AND STATUS=TRUE";
 	private Session getsession() {
 		Session session = sessionFactory.getCurrentSession();
 		return session;
@@ -28,9 +27,10 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public UsedCart createCart(Integer memberId) {
+	public UsedCart createCart(boolean status, Integer memberId) {
 		UsedCart usedCart = new UsedCart();
 		try {
+			usedCart.setStatus(true);
 			usedCart.setMemberId(memberId);
 			getsession().save(usedCart);
 		} catch (Exception e) {
