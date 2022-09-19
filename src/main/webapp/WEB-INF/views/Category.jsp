@@ -29,24 +29,26 @@
 	<div align="center">
 	<h3>
 		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="categoryId" value="${category.id}"/>
 					<c:param name="status" value="新到舊"/>
-					</c:url>">新到舊
+				</c:url>">新到舊
 		</a> | 
 		<a href="<c:url value='/ProductService/showProducts'>
+					<c:param name="categoryId" value="${category.id}"/>
 					<c:param name="status" value="舊到新"/>
-					</c:url>">舊到新
+				</c:url>">舊到新
 		</a> | 
 		
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
 					<c:param name="status" value="低到高"/>
-					</c:url>">低到高
+				</c:url>">低到高
 		</a> | 
 		
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
 					<c:param name="status" value="高到低"/>
-					</c:url>">高到低
+				</c:url>">高到低
 		</a><br>
 	</h3>
 		<form action="<c:url value='/ProductService/showProducts' />" method="GET">
