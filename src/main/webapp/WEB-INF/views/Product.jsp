@@ -28,12 +28,13 @@
 			<a href="<c:url value='/ProductService/showProducts' />">二手拍賣</a>
 			>
 			<a href="<c:url value='/ProductService/showProducts'>
-					<c:param name="categoryId" value="${product.categoryId.parentId}"/>
-					</c:url>">${product.categoryId.parentId}父層</a>
+					<c:param name="categoryId" value="${categoryP.id}"/>
+					</c:url>">${categoryP.name}</a>
 			>
 			<a href="<c:url value='/ProductService/showProducts'>
-					<c:param name="categoryId" value="${product.categoryId.id}"/>
-					</c:url>">${product.categoryId.name}</a>
+					<c:param name="categoryId" value="${product.category.id}"/>
+					<c:param name="parentId" value="${product.category.parentId}"/>
+					</c:url>">${product.category.name}</a>
 			>
 			${product.name}
 		</h4>
@@ -42,8 +43,8 @@
 				<td>商品ID:${product.id}</td>
 				<td>${product.createTime}</td>
 				<td>${product.content}</td>
-				<td>賣家ID:${product.memberId.id}</td>
-				<td>分類:${product.categoryId.name}</td>
+				<td>賣家ID:${product.member.id}</td>
+				<td>分類:${product.category.name}</td>
 				<td>圖片：${product.cover}</td>
 				<td>${product.name}</td>
 				<td>${product.price}</td>

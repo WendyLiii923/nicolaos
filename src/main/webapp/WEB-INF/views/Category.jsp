@@ -31,29 +31,34 @@
 	<h3>
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="parentId" value="${category.parentId}"/>
 					<c:param name="status" value="新到舊"/>
 				</c:url>">新到舊
 		</a> | 
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="parentId" value="${category.parentId}"/>
 					<c:param name="status" value="舊到新"/>
 				</c:url>">舊到新
 		</a> | 
 		
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="parentId" value="${category.parentId}"/>
 					<c:param name="status" value="低到高"/>
 				</c:url>">低到高
 		</a> | 
 		
 		<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="parentId" value="${category.parentId}"/>
 					<c:param name="status" value="高到低"/>
 				</c:url>">高到低
 		</a><br>
 	</h3>
 		<form action="<c:url value='/ProductService/showProducts' />" method="GET">
 			<input type="hidden" name="categoryId" value="${category.id}" >
+			<input type="hidden" name="parentId" value="${category.parentId}" >
 			<input type="hidden" name='status'  value='價格區間' >
     		最低價:<input type='text' name='start'  value='${start}' >
   			最高價:<input type='text' name='end'  value='${end}' >
