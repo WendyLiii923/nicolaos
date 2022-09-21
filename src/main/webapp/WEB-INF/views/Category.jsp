@@ -20,6 +20,7 @@
 					<td><a
 						href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${category.id}"/>
+					<c:param name="parentId" value="${category.parentId}"/>
 					</c:url>">
 							${category.name} </a></td>
 				</tr>

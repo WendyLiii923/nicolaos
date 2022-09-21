@@ -25,7 +25,6 @@ public class Members {
 		this.name = name;
 	}
 
-    @Column(name="member_id")
     public Integer getId() {
         return id;
     }

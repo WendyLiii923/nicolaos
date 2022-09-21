@@ -50,6 +50,23 @@ public class CartDetailDaoImpl implements CartDetailDao {
 		List<UsedCartDetail> list = check.list();
 		return list;
 	}
+
+	@Override
+	public void deleteCartDetail(Integer cartId, Integer productId) {
+		Query<UsedCartDetail> check = getSession().createQuery(selectProductsByCartIdAndProductId, UsedCartDetail.class);
+		check.setParameter("CARTID", cartId);
+		check.setParameter("PRODUCTID", productId);
+		UsedCartDetail aDetail = check.setMaxResults(1)
+										 .getResultList()
+										 .stream()
+										 .findFirst()
+										 .orElse(null);
+		if (aDetail != null) {
+			getSession().delete(aDetail);
+		}else {
+			System.out.println("NO PRODUCT");
+		}
+	}
 	
 
 }

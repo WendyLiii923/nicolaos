@@ -24,8 +24,14 @@
 			</c:forEach>
 		</table>
 	</div>
+	商品們
 	<div>
-	<a href="<c:url value='/ProductService/showCheckout' />">結帳</a>
+	
+	</div>
+	
+	<div>
+<%-- 	<a href="<c:url value='/ProductService/showCheckout' />">結帳</a> --%>
+	<a>結帳</a>
 	</div>
 
 </body>

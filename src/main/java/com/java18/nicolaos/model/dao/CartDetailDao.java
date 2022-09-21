@@ -9,5 +9,8 @@ public interface CartDetailDao {
 	public UsedCartDetail createCartDetail(Integer cartId, Integer productId, Integer productQty);
 //	查詢購物車細項
 	public List<UsedCartDetail> getCartDetail(Integer cartId, Integer productId);
+//	移除購物車內商品
+	public void deleteCartDetail(Integer cartId, Integer productId);
+	
 	
 }

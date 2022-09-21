@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java18.nicolaos.model.Members;
+import com.java18.nicolaos.model.UsedCategory;
 import com.java18.nicolaos.model.UsedProduct;
 
 @Repository
@@ -21,11 +23,8 @@ public class ProductDaoImpl implements ProductDao {
 
 	private String selectProductById = "FROM com.java18.nicolaos.model.UsedProduct WHERE ID=:PRODUCTID";
 	private String selectAllProduct = "FROM com.java18.nicolaos.model.UsedProduct";
-	private String selectProductByParentId = "FROM com.java18.nicolaos.model.UsedProduct P, "
-			+ "RIGHT JOIN P.CATEGORYID C"
-			+ "WHERE C.PARENTID=:CATEGORYID";
-	private String selectProductByQuery = "FROM com.java18.nicolaos.model.UsedProduct";
-
+	private String selectProductByParentId = "Select p From com.java18.nicolaos.model.UsedProduct p LEFT JOIN p.category c WHERE c.parentId = :categoryId";
+	private String selectProductByQuery = "Select p FROM com.java18.nicolaos.model.UsedProduct p LEFT JOIN p.category c";
 	public ProductDaoImpl() {
 
 	}
@@ -36,7 +35,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public UsedProduct createProduct(String name, Integer price, String content, Integer memberId, Integer categoryId) {
+	public UsedProduct createProduct(String name, Integer price, String content, Members memberId, UsedCategory categoryId) {
 		UsedProduct usedProduct = new UsedProduct();
 		try {
 			usedProduct.setName(name);
@@ -71,9 +70,8 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<UsedProduct> getProductListByParentId(Integer categoryId) {
 		Query<UsedProduct> check = getSession().createQuery(selectProductByParentId, UsedProduct.class);
-		check.setParameter("CATEGORYID", categoryId);
+		check.setParameter("categoryId", categoryId);
 		List<UsedProduct> list = check.list();
-		System.out.println(list.get(1));
 		return list;
 	}
 
@@ -86,11 +84,11 @@ public class ProductDaoImpl implements ProductDao {
 		String order = "";
 
 		if (categoryId != null) {
-			querySqlList.add("CATEGORYID=:categoryId");
+			querySqlList.add("c.id=:categoryId");
 			queryMap.put("categoryId", categoryId);
 		}
 		if (start != null && end != null) {
-			querySqlList.add("PRICE BETWEEN :start AND :end");
+			querySqlList.add("p.price BETWEEN :start AND :end");
 			queryMap.put("start", start);
 			queryMap.put("end", end);
 		}

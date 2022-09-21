@@ -27,7 +27,7 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public UsedCart createCart(boolean status, Integer memberId) {
+	public UsedCart createCart(Integer memberId) {
 		UsedCart usedCart = new UsedCart();
 		try {
 			usedCart.setStatus(true);
