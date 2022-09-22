@@ -28,8 +28,8 @@
 			<a href="<c:url value='/ProductService/showProducts' />">二手拍賣</a>
 			>
 			<a href="<c:url value='/ProductService/showProducts'>
-					<c:param name="categoryId" value="${categoryP.id}"/>
-					</c:url>">${categoryP.name}</a>
+					<c:param name="categoryId" value="${parentCategory.id}"/>
+					</c:url>">${parentCategory.name}</a>
 			>
 			<a href="<c:url value='/ProductService/showProducts'>
 					<c:param name="categoryId" value="${product.category.id}"/>

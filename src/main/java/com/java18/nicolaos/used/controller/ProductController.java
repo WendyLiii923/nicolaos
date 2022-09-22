@@ -59,7 +59,7 @@ public class ProductController {
             @RequestParam(defaultValue = "") String status) {
 		UsedProduct getProduct = productService.getProduct(productId);
 		model.addAttribute("product", getProduct);
-		model.addAttribute("categoryP", categoryService.getCategoryByParentId(getProduct.getCategory().getParentId()));
+		model.addAttribute("parentCategory", categoryService.getCategoryByParentId(getProduct.getCategory().getParentId()));
 		model.addAttribute("productList", productService.getProducts(categoryId, parentId, start, end, status));
 		model.addAttribute("categoryList", categoryService.getCategoryList());
 		return "/Product";

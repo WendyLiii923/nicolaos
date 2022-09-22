@@ -20,10 +20,20 @@ public class UsedChat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+
+	@Column(name = "fromId")
 	private Integer fromId;
+
+	@Column(name = "toId")
 	private Integer toId;
+
+	@Column(name = "content")
 	private String content;
 	
 	public UsedChat() {
@@ -40,7 +50,6 @@ public class UsedChat {
 	}
 	
 
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -49,8 +58,6 @@ public class UsedChat {
 		this.id = id;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -59,7 +66,6 @@ public class UsedChat {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "fromId")
 	public Integer getFromId() {
 		return fromId;
 	}
@@ -68,7 +74,6 @@ public class UsedChat {
 		this.fromId = fromId;
 	}
 
-	@Column(name = "toId")
 	public Integer getToId() {
 		return toId;
 	}
@@ -77,7 +82,6 @@ public class UsedChat {
 		this.toId = toId;
 	}
 
-	@Column(name = "content")
 	public String getContent() {
 		return content;
 	}

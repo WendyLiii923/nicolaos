@@ -20,10 +20,20 @@ public class UsedOrder {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	
+	@Column(name = "memberId")
 	private Integer memberId;
+	
+	@Column(name = "totalPrice")
 	private Integer totalPrice;
+	
+	@Column(name = "shippingFee")
 	private Integer shippingFee;
 	
 	public UsedOrder() {
@@ -40,7 +50,6 @@ public class UsedOrder {
 	}
 
 
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -49,8 +58,6 @@ public class UsedOrder {
 		this.id = id;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -59,7 +66,6 @@ public class UsedOrder {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "memberId")
 	public Integer getMemberId() {
 		return memberId;
 	}
@@ -68,7 +74,6 @@ public class UsedOrder {
 		this.memberId = memberId;
 	}
 
-	@Column(name = "totalPrice")
 	public Integer getTotalPrice() {
 		return totalPrice;
 	}
@@ -77,7 +82,6 @@ public class UsedOrder {
 		this.totalPrice = totalPrice;
 	}
 
-	@Column(name = "shippingFee")
 	public Integer getShippingFee() {
 		return shippingFee;
 	}

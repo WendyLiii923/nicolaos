@@ -20,9 +20,17 @@ public class UsedCart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+
+	@Column(name = "status")
 	private Boolean status;
+	
+	@Column(name = "memberId")
 	private Integer memberId;
 	
 	public UsedCart() {
@@ -36,8 +44,6 @@ public class UsedCart {
 		this.memberId = memberId;
 	}
 	
-
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -46,8 +52,6 @@ public class UsedCart {
 		this.id = id;
 	}
 	
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -56,7 +60,6 @@ public class UsedCart {
 		this.createTime = createTime;
 	}
 	
-	@Column(name = "status")
 	public Boolean getStatus() {
 		return status;
 	}
@@ -65,7 +68,6 @@ public class UsedCart {
 		this.status = status;
 	}
 	
-	@Column(name = "memberId")
 	public Integer getMemberId() {
 		return memberId;
 	}

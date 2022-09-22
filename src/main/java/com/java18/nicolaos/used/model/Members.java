@@ -13,6 +13,8 @@ public class Members {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer	id;
+
+	@Column(name="name")
     private String name;
 
     public Members(){
@@ -33,7 +35,6 @@ public class Members {
         this.id = id;
     }
 
-    @Column(name="name")
     public String getUserName() {
         return name;
     }

@@ -20,9 +20,17 @@ public class UsedCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "parentId")
 	private Integer parentId;
 	
 	public UsedCategory() {
@@ -36,7 +44,6 @@ public class UsedCategory {
 		this.parentId = parentId;
 		}
 
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -45,8 +52,6 @@ public class UsedCategory {
 		this.id = id;
 	}
 	
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -56,7 +61,6 @@ public class UsedCategory {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -65,7 +69,6 @@ public class UsedCategory {
 		this.name = name;
 	}
 
-	@Column(name = "parentId")
 	public Integer getParentId() {
 		return parentId;
 	}

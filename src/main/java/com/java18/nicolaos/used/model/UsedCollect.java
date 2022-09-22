@@ -20,9 +20,17 @@ public class UsedCollect {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	
+	@Column(name = "memberId")
 	private Integer memberId;
+
+	@Column(name = "productId")
 	private Integer productId;
 	
 	public UsedCollect() {
@@ -38,7 +46,6 @@ public class UsedCollect {
 	}
 
 
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -48,8 +55,6 @@ public class UsedCollect {
 		this.id = id;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -59,7 +64,6 @@ public class UsedCollect {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "memberId")
 	public Integer getMemberId() {
 		return memberId;
 	}
@@ -69,7 +73,6 @@ public class UsedCollect {
 		this.memberId = memberId;
 	}
 
-	@Column(name = "productId")
 	public Integer getProductId() {
 		return productId;
 	}

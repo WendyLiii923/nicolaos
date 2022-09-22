@@ -20,10 +20,20 @@ public class UsedOrderDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
+
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
+	@Column(name = "createTime")
 	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	
+	@Column(name = "orderId")
 	private Integer orderId;
+	
+	@Column(name = "productId")
 	private Integer productId;
+
+	@Column(name = "productQty")
 	private Integer productQty;
 	
 	
@@ -41,7 +51,6 @@ public class UsedOrderDetail {
 	}
 
 
-	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -50,8 +59,6 @@ public class UsedOrderDetail {
 		this.id = id;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm")
-	@Column(name = "createTime")
 	public Timestamp getCreateTime() {
 		return createTime;
 	}
@@ -60,7 +67,6 @@ public class UsedOrderDetail {
 		this.createTime = createTime;
 	}
 
-	@Column(name = "orderId")
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -69,7 +75,6 @@ public class UsedOrderDetail {
 		this.orderId = orderId;
 	}
 
-	@Column(name = "productId")
 	public Integer getProductId() {
 		return productId;
 	}
@@ -78,7 +83,6 @@ public class UsedOrderDetail {
 		this.productId = productId;
 	}
 	
-	@Column(name = "productQty")
 	public Integer getProductQty() {
 		return productQty;
 	}
